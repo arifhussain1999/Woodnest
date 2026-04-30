@@ -1,0 +1,2637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoodNest — Luxury Wooden Sofas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <style>
+        :root {
+            --maroon: #5D0A1E;
+            --maroon-light: #8E1633;
+            --bg: #F9F7F4;
+            --accent: #C5A059; /* Muted Gold */
+            --accent-glow: rgba(197, 160, 89, 0.3);
+            --text: #1A1A1A;
+            --text-muted: #666666;
+            --white: #FFFFFF;
+            --black: #050505;
+            --glass: rgba(255, 255, 255, 0.8);
+            --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            --transition: cubic-bezier(0.19, 1, 0.22, 1);
+            --golden-ratio: 1.618;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+            font-size: 16px;
+        }
+
+        html.locomotive-scroll {
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .btn, .filter-btn, .nav-links a, .section-tag, .product-card-tag {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* LOCOMOTIVE SCROLL CONTAINER */
+        .smooth-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        /* HEADER / NAV */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.5s var(--transition);
+            mix-blend-mode: difference;
+        }
+        .header.scrolled {
+            background: rgba(250, 248, 246, 0.95);
+            padding: 0.8rem 3rem;
+            mix-blend-mode: normal;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        }
+        .header.scrolled .logo, .header.scrolled .nav-links a {
+            color: var(--text);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff;
+            transition: transform 0.5s var(--transition);
+        }
+        .logo:hover .logo-icon {
+            transform: rotate(360deg);
+        }
+        .logo span {
+            color: var(--maroon);
+        }
+        .header.scrolled .logo {
+            color: var(--black);
+        }
+        .header.scrolled .logo-icon {
+            background: var(--black);
+        }
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+        .tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 2px;
+            line-height: 1;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width 0.4s var(--transition);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .wishlist-badge {
+            position: relative;
+            cursor: pointer;
+        }
+        .wishlist-count {
+            position: absolute;
+            top: -10px;
+            right: -14px;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+        .wishlist-count.pulse {
+            animation: pulseBadge 0.4s ease;
+        }
+        @keyframes pulseBadge {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.45);
+            }
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: var(--black);
+            z-index: 999;
+            padding: 6rem 2rem;
+            transition: right 0.5s var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-menu.open {
+            right: 0;
+        }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+        }
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--black);
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--black);
+            z-index: 1;
+        }
+        .hero-image-container {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s var(--transition);
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-image-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        .hero-slide.active .hero-image-bg {
+            animation: slideZoom 8s linear forwards;
+        }
+        @keyframes slideZoom {
+            from { transform: scale(1.1); }
+            to { transform: scale(1.25); }
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.8) 100%);
+            z-index: 2;
+        }
+        .hero-indicators {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 5;
+        }
+        .indicator-dot {
+            width: 40px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.4s var(--transition);
+        }
+        .indicator-dot.active {
+            background: var(--accent);
+            width: 60px;
+        }
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            text-align: center;
+            color: #fff;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+        .hero-tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7.5rem);
+            font-weight: 500;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            opacity: 0;
+            letter-spacing: -2px;
+        }
+        .hero-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+        }
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+            margin-bottom: 0.2rem;
+        }
+        .hero-title .line span {
+            display: block;
+            transform: translateY(110%);
+        }
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 550px;
+            margin: 0 auto 3.5rem;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--transition);
+            text-decoration: none;
+        }
+        .hero-content .btn {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .btn-primary {
+            background: var(--maroon);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 50px;
+        }
+        .btn-primary:hover {
+            background: var(--accent);
+            color: var(--maroon);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--accent);
+        }
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-ripple .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            transform: scale(0);
+            animation: rippleAnim 0.75s ease-out forwards;
+            pointer-events: none;
+        }
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+        }
+        .scroll-indicator .mouse {
+            width: 26px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            position: relative;
+        }
+        .scroll-indicator .mouse::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 8px;
+            background: #fff;
+            border-radius: 2px;
+            animation: scrollWheel 1.6s infinite;
+        }
+        @keyframes scrollWheel {
+            0% {
+                top: 8px;
+                opacity: 1;
+            }
+            100% {
+                top: 24px;
+                opacity: 0;
+            }
+        }
+
+        /* SECTION STYLES */
+        section {
+            padding: 6rem 3rem;
+        }
+        .section-tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--maroon);
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .section-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            font-weight: 300;
+            max-width: 500px;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FEATURED PRODUCTS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .contact-link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.8s var(--transition);
+            position: relative;
+            box-shadow: var(--soft-shadow);
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .product-card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-12px);
+            border-color: var(--accent);
+        }
+        .product-card-image {
+            width: 100%;
+            aspect-ratio: 1/1; /* Square for a more modern e-commerce look */
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Luxury Shimmer Effect */
+        .product-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s;
+            z-index: 1;
+        }
+        .product-card:hover .product-card-image::after {
+            left: 150%;
+        }
+        .product-card-image .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            position: relative;
+        }
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--transition);
+        }
+        .product-card:hover .product-card-image img {
+            transform: scale(1.1);
+        }
+        .product-card-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--black);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            z-index: 2;
+            border-radius: 2px;
+        }
+        .product-card-wishlist {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 38px;
+            height: 38px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .product-card-wishlist:hover {
+            transform: scale(1.1);
+        }
+        .product-card-wishlist.liked {
+            background: #ffe0e0;
+        }
+        .product-card-info {
+            padding: 1.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+        .product-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.2px;
+        }
+        .product-card-category {
+            font-size: 0.78rem;
+            color: #888;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .product-card-price {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--maroon);
+            margin-top: 0.6rem;
+        }
+        .product-card-colors {
+            display: flex;
+            gap: 6px;
+            margin-top: 0.8rem;
+        }
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .inquiry-btn {
+            background: var(--maroon);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            width: 100%;
+            display: block;
+            font-weight: 600;
+        }
+        .inquiry-btn:hover {
+            background: var(--accent);
+            color: var(--maroon);
+            transform: translateY(-2px);
+        }
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s;
+
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal {
+            background: #fff;
+            border-radius: 8px;
+            max-width: 750px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.4s var(--transition);
+        }
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+            z-index: 5;
+            transition: transform 0.3s;
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+        .modal-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #e8e0d8, #d5c8b8);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* SHOP PAGE */
+        .shop-header {
+            padding-top: 8rem;
+            text-align: center;
+            background: var(--black);
+            color: #fff;
+            padding-bottom: 3rem;
+        }
+        .shop-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 3rem;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 70px;
+            z-index: 50;
+        }
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 1.5px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--black);
+            color: #fff;
+            border-color: var(--black);
+        }
+        .color-filter {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .color-filter:hover,
+        .color-filter.active {
+            border-color: var(--black);
+            transform: scale(1.15);
+        }
+
+        /* ABOUT PAGE */
+        .about-hero {
+            padding-top: 8rem;
+            text-align: center;
+            background: var(--black);
+            color: #fff;
+            padding-bottom: 4rem;
+        }
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .testimonial-card {
+            min-width: 340px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            scroll-snap-align: start;
+            box-shadow: var(--soft-shadow);
+            flex-shrink: 0;
+        }
+        .testimonial-card .stars {
+            color: #f0c040;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card .quote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--white);
+            color: var(--text-muted);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        footer .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        footer .footer-logo img {
+            filter: brightness(0); /* Make logo black */
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+        footer .footer-grid h4 {
+            color: var(--black);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        footer .footer-grid ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        footer .footer-grid ul li:hover {
+            color: var(--maroon);
+        }
+
+        /* PARALLAX */
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: absolute;
+            inset: -20%;
+            background: linear-gradient(135deg, #f0e8dd 0%, #e8ddd0 50%, #dcd0c0 100%);
+            z-index: -1;
+            transition: transform 0.1s linear;
+        }
+
+        /* 3D TILT */
+        .tilt-container {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .tilt-inner {
+            transition: transform 0.15s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        /* FLOATING CARDS */
+        @keyframes floatCard {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+        .floating {
+            animation: floatCard 4.5s ease-in-out infinite;
+        }
+        .floating-delay-1 {
+            animation-delay: 0.5s;
+        }
+        .floating-delay-2 {
+            animation-delay: 1.2s;
+        }
+        .floating-delay-3 {
+            animation-delay: 2s;
+        }
+
+        /* PRODUCT DETAIL PAGE (PDP) - E-COMMERCE STYLE */
+        .product-pdp-container {
+            padding: 8rem 4rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        .pdp-breadcrumbs {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .pdp-breadcrumbs a {
+            color: #666;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .pdp-breadcrumbs a:hover {
+            color: var(--accent);
+        }
+        .pdp-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        /* Media Gallery */
+        .pdp-gallery-section {
+            position: sticky;
+            top: 100px;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .pdp-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .thumb {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 4px;
+            background: #fff;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+        .thumb.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(150, 90, 62, 0.2);
+        }
+        .pdp-main-media {
+            flex-grow: 1;
+            background: #fff;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+        .pdp-main-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* PDP Info */
+        .pdp-header {
+            margin-bottom: 2rem;
+        }
+        .pdp-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+        .pdp-rating .stars {
+            color: #f1c40f;
+            font-size: 0.9rem;
+        }
+        .pdp-rating .count {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .pdp-pricing-box {
+            padding: 1.5rem;
+            background: rgba(150, 90, 62, 0.03);
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
+        }
+        .pdp-price {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .pdp-tax {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+        .pdp-offers {
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .pdp-offers p {
+            font-size: 0.85rem;
+            color: #444;
+        }
+
+        .pdp-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .spec-item {
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .spec-label {
+            display: block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        .spec-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pdp-description-section details {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+        .pdp-description-section summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pdp-description-section summary::after {
+            content: "+";
+            font-size: 1.2rem;
+            color: #888;
+        }
+        .pdp-description-section details[open] summary::after {
+            content: "−";
+        }
+        .pdp-description-section p, .pdp-description-section ul {
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .pdp-actions {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+        .qty-selector select {
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .pdp-tech-table {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .tech-row {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .tech-row:last-child {
+            border-bottom: none;
+        }
+        .tech-row span {
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+        }
+        .tech-row span:first-child {
+            background: #f9f9f9;
+            color: #888;
+            font-weight: 500;
+        }
+        .tech-row span:last-child {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .pdp-reviews-preview {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px dashed #ddd;
+        }
+        .pdp-reviews-preview h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .review-summary {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+        .rating-big {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .rating-big span {
+            font-size: 1rem;
+            color: #888;
+            font-weight: 400;
+        }
+        .rating-breakdown {
+            flex-grow: 1;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .bar {
+            height: 8px;
+            background: #eee;
+            flex-grow: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar div {
+            height: 100%;
+            background: #f1c40f;
+        }
+        .top-review {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+        .verified {
+            font-size: 0.7rem;
+            color: #27ae60;
+            background: #eafaf1;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .review-stars {
+            color: #f1c40f;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-products-section {
+            margin-top: 8rem;
+            padding-top: 4rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .product-pdp-container {
+                padding: 6rem 1rem 2rem;
+            }
+            .pdp-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .pdp-gallery-section {
+                position: relative;
+                top: 0;
+                flex-direction: column-reverse;
+            }
+            .pdp-thumbnails {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* PAGE TRANSITIONS */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeInPage 0.6s ease;
+        }
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            section {
+                padding: 2.5rem 1.2rem;
+            }
+            footer {
+                padding: 2.5rem 1.2rem 1.5rem;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            .product-card {
+                border-radius: 10px;
+            }
+            .product-card-image {
+                aspect-ratio: 1/1;
+            }
+            .product-card-info {
+                padding: 0.8rem;
+                background: #fff;
+                backdrop-filter: none;
+            }
+            .product-card-name {
+                font-size: 0.85rem;
+                letter-spacing: -0.1px;
+            }
+            .product-card-price {
+                font-size: 0.85rem;
+            }
+            .inquiry-btn {
+                padding: 0.5rem;
+                font-size: 0.6rem;
+                margin-top: 0.6rem;
+                border-radius: 30px;
+            }
+            .hero {
+                height: 75vh;
+                padding-top: 60px;
+            }
+            .hero-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+                letter-spacing: -1px;
+                margin-bottom: 1.2rem;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2.5rem;
+                padding: 0;
+                background: none;
+                backdrop-filter: none;
+            }
+            .hero-indicators {
+                bottom: 2rem;
+                right: 50%;
+                transform: translateX(50%);
+                gap: 0.6rem;
+            }
+            .indicator-dot {
+                width: 25px;
+            }
+            .indicator-dot.active {
+                width: 40px;
+            }
+            .filter-bar {
+                padding: 1rem;
+                gap: 0.5rem;
+                top: 56px;
+            }
+            .filter-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* MOUSE LIGHT EFFECT */
+        .light-follow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 167, 122, 0.12) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.4s;
+            opacity: 0;
+        }
+        .light-follow.visible {
+            opacity: 1;
+        }
+
+        /* WISHLIST PAGE */
+        .wishlist-empty {
+            text-align: center;
+            padding: 8rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #999;
+        }
+
+        /* NOTIFICATION TOAST */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            z-index: 3000;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            animation: toastIn 0.4s ease, toastOut 0.4s ease 2.5s forwards;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes toastIn {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes toastOut {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+        }
+
+        /* IMAGE GALLERY SLIDER */
+        .gallery-thumbs {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .gallery-thumb {
+            width: 60px;
+            height: 45px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .gallery-thumb:hover,
+        .gallery-thumb.active {
+            border-color: var(--maroon);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOUSE LIGHT EFFECT -->
+    <div class="light-follow" id="lightFollow"></div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="logo-group" onclick="navigateTo('home')">
+            <div class="logo">
+                <img src="asset/logo.png" alt="WoodNest Logo" style="height: 40px; width: auto; object-fit: contain;">
+            </div>
+            <span class="tagline">Best Sofa in Siliguri</span>
+        </div>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="navigateTo('home')" class="active" data-page="home">Home</a></li>
+                <li><a onclick="navigateTo('shop')" data-page="shop">Shop</a></li>
+                <li><a onclick="navigateTo('about')" data-page="about">About</a></li>
+                <li><a onclick="navigateTo('contact')" data-page="contact">Contact</a></li>
+                <li class="wishlist-badge">
+                    <a onclick="navigateTo('wishlist')" data-page="wishlist">♡ Wishlist</a>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a onclick="navigateTo('home'); closeMobileMenu();">Home</a>
+        <a onclick="navigateTo('shop'); closeMobileMenu();">Shop</a>
+        <a onclick="navigateTo('about'); closeMobileMenu();">About</a>
+        <a onclick="navigateTo('contact'); closeMobileMenu();">Contact</a>
+        <a onclick="navigateTo('wishlist'); closeMobileMenu();">♡ Wishlist (<span id="mobileWishlistCount">0</span>)</a>
+    </div>
+
+    <!-- MAIN SCROLL CONTAINER -->
+    <div class="smooth-scroll" id="smoothScroll">
+        <div data-scroll-container>
+
+            <!-- ============ HOME PAGE ============ -->
+            <div class="page active" id="page-home" data-scroll-section>
+                <!-- Hero -->
+                <section class="hero" id="heroSection">
+                    <div class="hero-image-container" id="heroSlider">
+                        <div class="hero-slide active"><img src="asset/WhatsApp Image 2026-04-30 at 01.12.06.jpeg" alt="Luxury Sofa 1" class="hero-image-bg"></div>
+                        <div class="hero-slide"><img src="asset/WhatsApp Image 2026-04-30 at 01.12.07 (1).jpeg" alt="Luxury Sofa 2" class="hero-image-bg"></div>
+                        <div class="hero-slide"><img src="asset/WhatsApp Image 2026-04-30 at 01.12.07.jpeg" alt="Luxury Sofa 3" class="hero-image-bg"></div>
+                        <div class="hero-slide"><img src="asset/WhatsApp Image 2026-04-30 at 01.12.08 (1).jpeg" alt="Luxury Sofa 4" class="hero-image-bg"></div>
+                        <div class="hero-slide"><img src="asset/WhatsApp Image 2026-04-30 at 01.12.08.jpeg" alt="Luxury Sofa 5" class="hero-image-bg"></div>
+                    </div>
+                    <div class="hero-overlay"></div>
+                    <div class="hero-indicators" id="heroIndicators">
+                        <div class="indicator-dot active" onclick="goToSlide(0)"></div>
+                        <div class="indicator-dot" onclick="goToSlide(1)"></div>
+                        <div class="indicator-dot" onclick="goToSlide(2)"></div>
+                        <div class="indicator-dot" onclick="goToSlide(3)"></div>
+                        <div class="indicator-dot" onclick="goToSlide(4)"></div>
+                    </div>
+                    <canvas class="hero-particles" id="heroParticles"></canvas>
+                    <div class="hero-content">
+                        <span class="hero-tagline">Best Sofa in Siliguri</span>
+                        <h1 class="hero-title">
+                            <span class="line"><span>The <em>Intersection</em> of</span></span>
+                            <span class="line"><span>Wood &amp; Comfort</span></span>
+                        </h1>
+
+                        <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+                            <button class="btn btn-primary btn-ripple" onclick="navigateTo('shop')">Explore Collection</button>
+                            <button class="btn btn-outline btn-ripple" onclick="navigateTo('about')">Our Heritage</button>
+                        </div>
+                    </div>
+                    <div class="scroll-indicator" id="scrollIndicator">
+                        <div class="mouse"></div>
+                        <span style="color:#fff;font-size:0.7rem;letter-spacing:3px;">EXPLORE</span>
+                    </div>
+                </section>
+
+                <!-- Featured Products -->
+                <section data-scroll data-scroll-speed="0.1">
+                    <p class="section-tag text-center">Handpicked</p>
+                    <h2 class="section-title text-center">Featured Collection</h2>
+                    <p class="section-subtitle text-center mx-auto">Our most coveted designs, blending solid wood craftsmanship with plush comfort.</p>
+                    <div class="products-grid" id="featuredProducts"></div>
+                    <div class="text-center" style="margin-top:3rem;">
+                        <button class="btn btn-primary btn-ripple" onclick="navigateTo('shop')">View All 44 Sofas →</button>
+                    </div>
+                </section>
+
+                <!-- Testimonials -->
+                <section style="background:#fff;">
+                    <p class="section-tag text-center">Testimonials</p>
+                    <h2 class="section-title text-center">Loved by Many</h2>
+                    <div class="testimonials-carousel" id="testimonialsCarousel">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"The craftsmanship is extraordinary. Our WoodNest sofa has become the heart of our living room."</p>
+                            <p class="author">— Elena M.</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"Worth every penny. The wood grain detail and fabric quality are unmatched."</p>
+                            <p class="author">— James K.</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"I've never felt such comfort. The L-shape is perfect for family movie nights."</p>
+                            <p class="author">— Priya S.</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">"The delivery was seamless and the sofa looks even better in person. Truly luxurious."</p>
+                            <p class="author">— Marcus T.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <div class="footer-grid">
+                        <div>
+                            <h4>Collections</h4>
+                            <ul>
+                                <li>3-Seater Sofas</li><li>L-Shape Sofas</li><li>Loveseats</li><li>Recliners</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Company</h4>
+                            <ul>
+                                <li onclick="navigateTo('about')">About Us</li>
+                                <li onclick="navigateTo('contact')">Contact</li>
+                                <li>Careers</li><li>Press</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Support</h4>
+                            <ul>
+                                <li>FAQ</li><li>Shipping</li><li>Returns</li><li>Warranty</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="font-size:0.8rem;color:#888;">© 2024 WoodNest. All rights reserved. | Luxury Wooden Sofas</p>
+                    <p style="font-size:0.8rem;color:#999;margin-top:0.5rem;">Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+            <!-- ============ SHOP PAGE ============ -->
+            <div class="page" id="page-shop" data-scroll-section>
+                <div class="shop-header">
+                    <h1>Our Collection</h1>
+                    <p style="color:#ccc;margin-top:0.5rem;">44 handcrafted wooden sofas</p>
+                </div>
+                <div class="filter-bar" id="filterBar">
+                    <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterProducts('l-shape', this)">L-Shape</button>
+                    <button class="filter-btn" onclick="filterProducts('sofa-set', this)">Sofa Sets</button>
+                    <button class="filter-btn" onclick="filterProducts('3-seater', this)">3-Seater</button>
+                    <button class="filter-btn" onclick="filterProducts('2-seater', this)">2-Seater</button>
+                    <button class="filter-btn" onclick="filterProducts('1-seater', this)">1-Seater</button>
+                </div>
+                <section>
+                    <div class="products-grid" id="allProductsGrid"></div>
+                </section>
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <p style="font-size:0.8rem;color:#999;">© 2024 WoodNest. All rights reserved. | Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+
+
+            <!-- ============ ABOUT PAGE ============ -->
+            <div class="page" id="page-about" data-scroll-section>
+                <div class="about-hero">
+                    <h1>Our Story</h1>
+                    <p style="color:#ccc;">Crafting timeless wooden furniture since 2024</p>
+                </div>
+                <div class="about-content">
+                    <p>At <strong>WoodNest</strong>, we believe that furniture is more than just function — it's the soul of a home. Every sofa we create is a dialogue between nature's finest materials and human artistry.</p>
+                    <p>Our journey began with a simple vision: to bring the warmth of solid wood into modern living spaces. We source our timber from sustainable forests, ensuring each piece carries not just beauty but responsibility.</p>
+                    <p>From the hands of skilled artisans to the heart of your home, every WoodNest sofa undergoes 47 quality checks. The result? Furniture that ages gracefully and tells a story for generations.</p>
+                    <p><em>"Luxury is in the details — the grain of the wood, the stitch of the fabric, the comfort of the cushion."</em></p>
+                </div>
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <p style="font-size:0.8rem;color:#999;">© 2024 WoodNest. All rights reserved. | Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+            <!-- ============ CONTACT PAGE ============ -->
+            <div class="page" id="page-contact" data-scroll-section>
+                <div class="about-hero">
+                    <h1>Contact Us</h1>
+                    <p style="color:#ccc;">We'd love to hear from you</p>
+                </div>
+                    <p>📍 <strong>Showroom:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Woodnest+Upper+Nivedita+Road+Gurung+Busty+Pradhan+Nagar+Siliguri+734003" target="_blank" class="contact-link" style="border-bottom:1px dashed var(--accent);">Woodnest, Upper Nivedita Road, Gurung Busty, Pradhan Nagar, Siliguri - 734003</a></p>
+                    <p>📞 <strong>Phone:</strong> <a href="tel:+919832477151" class="contact-link">+91 98324 77151</a></p>
+                    <p>✉️ <strong>Email:</strong> <a href="mailto:woodnestfurnitureslg@gmail.com" class="contact-link">woodnestfurnitureslg@gmail.com</a></p>
+                    <p style="margin-top:2rem;color:#888;">Visit our showroom to experience the collection in person. No appointment needed.</p>
+                </div>
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <p style="font-size:0.8rem;color:#999;">© 2024 WoodNest. All rights reserved. | Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+            <!-- ============ PRODUCT DETAIL PAGE ============ -->
+            <div class="page" id="page-product" data-scroll-section>
+                <div class="product-pdp-container">
+                    <!-- Breadcrumbs -->
+                    <nav class="pdp-breadcrumbs">
+                        <a onclick="navigateTo('home')">Home</a> / 
+                        <a onclick="navigateTo('shop')">Shop</a> / 
+                        <span id="breadcrumbName">Product</span>
+                    </nav>
+
+                    <div class="pdp-layout">
+                        <!-- Left: Media Gallery -->
+                        <div class="pdp-gallery-section">
+                            <div class="pdp-main-media" id="pdpMedia">🛋️</div>
+                            <div class="pdp-thumbnails">
+                                <div class="thumb active" onclick="changePdpImage(this)">🛋️</div>
+                                <div class="thumb" onclick="changePdpImage(this)">🪵</div>
+                                <div class="thumb" onclick="changePdpImage(this)">✨</div>
+                                <div class="thumb" onclick="changePdpImage(this)">🏠</div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Product Information -->
+                        <div class="pdp-info">
+                            <div class="pdp-header">
+                                <p class="pdp-category" id="pdpCategory">Category</p>
+                                <h1 class="pdp-name" id="pdpName">Product Name</h1>
+                                <div class="pdp-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="count">(124 Reviews)</span>
+                                </div>
+                            </div>
+
+                            <div class="pdp-pricing-box">
+                                <p class="pdp-price" id="pdpPrice">₹0</p>
+                                <p class="pdp-tax">Inclusive of all taxes</p>
+                                <div class="pdp-offers">
+                                    <p>🎁 <strong>Bank Offer:</strong> 10% Instant Discount on HDFC Cards</p>
+                                    <p>🚚 <strong>Fast Delivery:</strong> Free delivery by Monday</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pdp-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Material</span>
+                                    <span class="spec-value" id="pdpWood">Solid Teak</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Upholstery</span>
+                                    <span class="spec-value" id="pdpFabric">Premium Velvet</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Dimensions</span>
+                                    <span class="spec-value" id="pdpSize">Standard</span>
+                                </div>
+                            </div>
+
+                            <div class="pdp-description-section">
+                                <details open>
+                                    <summary>Product Description</summary>
+                                    <p id="pdpDesc">Handcrafted excellence in every stitch.</p>
+                                </details>
+                                <details>
+                                    <summary>Specifications & Features</summary>
+                                    <ul id="pdpFeatures">
+                                        <li>Kiln-dried solid wood frame</li>
+                                        <li>High-density foam seating</li>
+                                        <li>Premium finish</li>
+                                    </ul>
+                                </details>
+                                <details>
+                                    <summary>Technical Details</summary>
+                                    <div class="pdp-tech-table">
+                                        <div class="tech-row"><span>Brand</span><span>WOODNEST</span></div>
+                                        <div class="tech-row"><span>Model Number</span><span id="pdpModelNum">WN-101</span></div>
+                                        <div class="tech-row"><span>Primary Material</span><span id="pdpMaterialTech">Solid Wood</span></div>
+                                        <div class="tech-row"><span>Upholstery Material</span><span id="pdpFabricTech">Premium Fabric</span></div>
+                                        <div class="tech-row"><span>Seating Capacity</span><span id="pdpCapacityTech">3 Seater</span></div>
+                                        <div class="tech-row"><span>Warranty</span><span>24 Months</span></div>
+                                    </div>
+                                </details>
+                                <details>
+                                    <summary>Delivery & Returns</summary>
+                                    <p>Free standard delivery on all orders over ₹50,000. 7-day easy return policy for manufacturing defects.</p>
+                                </details>
+                            </div>
+
+                            <!-- Customer Reviews (Amazon Style) -->
+                            <div class="pdp-reviews-preview">
+                                <h3>Customer Reviews</h3>
+                                <div class="review-summary">
+                                    <div class="rating-big">4.8 <span>out of 5</span></div>
+                                    <div class="rating-breakdown">
+                                        <div class="bar-row"><span>5 Star</span><div class="bar"><div style="width:85%"></div></div><span>85%</span></div>
+                                        <div class="bar-row"><span>4 Star</span><div class="bar"><div style="width:10%"></div></div><span>10%</span></div>
+                                    </div>
+                                </div>
+                                <div class="top-review">
+                                    <div class="reviewer">
+                                        <span class="avatar">👤</span>
+                                        <strong>Rohan Sharma</strong>
+                                        <span class="verified">Verified Purchase</span>
+                                    </div>
+                                    <div class="review-stars">★★★★★</div>
+                                    <p>"Exceptional quality wood and very comfortable cushions. Fits perfectly in my living room."</p>
+                                </div>
+                            </div>
+
+                            <div class="pdp-actions">
+                                <div class="qty-selector">
+                                    <span>Quantity:</span>
+                                    <select>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-ripple" id="pdpWishlistBtn" onclick="toggleWishlistPDP()">Add to Wishlist</button>
+                                    <button class="btn btn-outline btn-ripple" onclick="contactSales()">Buy Now via WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Products -->
+                    <div class="related-products-section">
+                        <h2 class="section-title">You May Also Like</h2>
+                        <div class="products-grid" id="pdpRelatedGrid"></div>
+                    </div>
+                </div>
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <p style="font-size:0.8rem;color:#999;">© 2024 WoodNest. All rights reserved. | Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+            <!-- ============ WISHLIST PAGE ============ -->
+            <div class="page" id="page-wishlist" data-scroll-section>
+                <div class="shop-header">
+                    <h1>Your Wishlist</h1>
+                    <p style="color:#ccc;">Saved for later</p>
+                </div>
+                <section>
+                    <div class="products-grid" id="wishlistGrid"></div>
+                    <div class="wishlist-empty" id="wishlistEmpty" style="display:none;">Your wishlist is empty. Explore our <a href="#" onclick="navigateTo('shop')" style="color:var(--maroon);">collection</a>.</div>
+                </section>
+                <footer>
+                    <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo" style="height: 50px; width: auto; filter: brightness(0);"></div>
+                    <p style="font-size:0.8rem;color:#999;">© 2024 WoodNest. All rights reserved. | Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank" style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeQuickView()">✕</button>
+            <div class="modal-image" id="qvImage">🛋️</div>
+            <h3 id="qvName">Sofa Name</h3>
+            <p style="color:var(--maroon);font-weight:600;font-size:1.2rem;" id="qvPrice">₹0</p>
+            <p style="color:#666;margin:0.5rem 0;" id="qvDesc">Description</p>
+            <button class="btn btn-primary btn-ripple" id="qvWishlistBtn" onclick="quickViewAddWishlist()">♡ Add to Wishlist</button>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js">
+    </script>
+    <script>
+        (function() {
+            // ============ PRODUCT DATA (ACTUAL 44 PRODUCTS) ============
+            const productImages = ["image/WhatsApp Image 2026-04-30 at 02.09.51.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.54 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.54 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.54.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.55 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.55 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.55 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.55.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.56 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.56 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.56 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.56.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.57 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.57 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.57.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.58 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.58 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.58 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.58.jpeg","image/WhatsApp Image 2026-04-30 at 02.09.59 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.59 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.59 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.09.59.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.00 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.00 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.00 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.00.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.01 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.01 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.01.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.02 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.02 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.02 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.02.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.03 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.03 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.03 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.03.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.04 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.04 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.04 (3).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.04.jpeg","image/WhatsApp Image 2026-04-30 at 02.10.05 (1).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.05 (2).jpeg","image/WhatsApp Image 2026-04-30 at 02.10.05.jpeg"];
+
+            const allProducts = [
+                { id: 0, name: 'CAFFINO L SHAPE 3+2+CORNER+2 ROUND CHAIR', category: 'l-shape', price: 99450, image: productImages[0], wood: 'Solid Wood', fabric: 'Premium Fabric', desc: '3+2+ CORNER+2 ROUND CHAIR. Size: L 108 x W 84 D 36 (in)', features: ['Handcrafted', 'Solid frame', 'Premium finish'] },
+                { id: 1, name: 'GERENA', category: '1-seater', price: 89000, image: productImages[44], wood: 'Solid Wood', fabric: 'Beige PU', desc: 'Regular Beige / Coffee Brown. Size: L 38 X D 36 (in)', features: ['Compact', 'Durable PU', 'Solid Wood'] },
+                { id: 2, name: 'SS CEDAR PU 3 SEATER', category: '3-seater', price: 33150, image: productImages[2], wood: 'Solid Wood', fabric: 'Beige PU', desc: 'Regular Beige / Coffee Brown. Size: L 72 X D 36 (in)', features: ['Spacious', 'Premium look', 'Easy clean'] },
+                { id: 3, name: 'SS CEDAR PU 1 SEATER', category: '1-seater', price: 11000, image: productImages[3], wood: 'Solid Wood', fabric: 'Beige PU', desc: 'Regular Beige / Coffee Brown. Size: L 58 X D 36 (in)', features: ['Cozy', 'Sturdy build', 'Modern style'] },
+                { id: 4, name: 'SS CEDAR PU 2 SEATER', category: 'sofa-set', price: 22100, image: productImages[4], wood: 'Solid Wood', fabric: 'Bombay Brown', desc: 'Full set: 3 Seater + 1 Seater + 1 Seater. Luxury brown finish.', features: ['Complete set', 'Classic design', 'Plush cushions'] },
+                { id: 5, name: 'SS BOMBAY BROWN 3 SEATER', category: 'l-shape', price: 22100, image: productImages[5], wood: 'Solid Wood', fabric: 'Premium Fabric', desc: 'Audi inspired luxury L-shape. Size: L 118 x W 104 D 36 (in)', features: ['Ultra luxury', 'Large seating', 'Modern silhouette'] },
+                { id: 6, name: 'SS BOMBAY BROWN 1 SEATER', category: '1-seater', price: 7800, image: productImages[6], wood: 'Solid Wood', fabric: 'Trendz Fabric', desc: 'Contemporary L-shape design. Size: L 118 x W 104 D 36 (in)', features: ['Modern trend', 'Comfort focus', 'Solid build'] },
+                { id: 7, name: 'SS BOMBAY BROWN (3+1+1)', category: 'l-shape', price: 42900, image: productImages[7], wood: 'Solid Wood', fabric: 'Royal Fabric', desc: 'Palatial comfort and size. Size: L 118 x W 104 D 36 (in)', features: ['Royal aesthetic', 'Deep seating', 'Durable'] },
+                { id: 8, name: 'SS TRENDZ L SHAРE', category: 'l-shape', price: 75400, image: productImages[8], wood: 'Solid Wood', fabric: 'Coral Fabric', desc: 'Elegant coral design L-shape. Premium finish.', features: ['Elegant', 'Soft touch', 'Strong frame'] },
+                { id: 9, name: 'SS AUDI L SHAPE', category: 'l-shape', price: 99450, image: productImages[9], wood: 'Solid Wood', fabric: 'Space Fabric', desc: 'Sleek Apollo series. Size: L 115 x W 96 D 36 (in)', features: ['Sleek', 'Ergonomic', 'Premium'] },
+                { id: 10, name: 'SS CORAL L SHAPЕ', category: 'l-shape', price: 78000, image: productImages[10], wood: 'Solid Wood', fabric: 'Ringo Fabric', desc: 'Modern Ringo styling. Size: L 115 x W 96 D 36 (in)', features: ['Stylish', 'Bold colors', 'High density foam'] },
+                { id: 11, name: 'SS MAHAL L SHAРЕ', category: 'l-shape', price: 88400, image: productImages[11], wood: 'Solid Wood', fabric: 'Artisan Fabric', desc: 'Artistic design. Size: L 109 x W 84 D 36 (in)', features: ['Artistic', 'Premium texture', 'Sturdy'] },
+                { id: 12, name: 'SS PICASSO L SHАРЕ', category: 'l-shape', price: 83200, image: productImages[12], wood: 'Solid Wood', fabric: 'Kazo Fabric', desc: 'Kazo premium L-shape. Size: L 114 x W 90 D 36 (in)', features: ['Premium feel', 'Large dimensions', 'Quality wood'] },
+                { id: 13, name: 'SS RINGO L SHAPЕ', category: 'l-shape', price: 96200, image: productImages[13], wood: 'Solid Wood', fabric: 'Mac Fabric', desc: 'Minimalist Mac design. Size: L 109 x W 84 D 36 (in)', features: ['Minimalist', 'Sharp lines', 'Comfortable'] },
+                { id: 14, name: 'SS APOLLO L SHAРE', category: 'l-shape', price: 85800, image: productImages[14], wood: 'Solid Wood', fabric: 'Marco Fabric', desc: 'Marco value series. Handcrafted wooden frame.', features: ['Value for money', 'Reliable', 'Classic'] },
+                { id: 15, name: 'SS RONALD L SHAРЕ', category: 'l-shape', price: 57200, image: productImages[15], wood: 'Solid Wood', fabric: 'Ronald Fabric', desc: 'Ronald L-shape (Without Table). Size: L 108 x W 84 D 36 (in)', features: ['Without table', 'Solid oak', 'Modern'] },
+                { id: 16, name: 'SS KAZO L SHAPE', category: 'sofa-set', price: 91000, image: productImages[16], wood: 'Solid Wood', fabric: 'Oyster Fabric', desc: 'Large sofa set (Without Table). 3 Seater + 2 Seater + 2 Seater.', features: ['7-seater set', 'Luxury', 'Grand'] },
+                { id: 17, name: 'SS MARCO L SHAРE', category: 'l-shape', price: 57200, image: productImages[17], wood: 'Solid Wood', fabric: 'Ordan Fabric', desc: 'Ordan series. Size: L 109 x W 84 D 36 (in)', features: ['Unique design', 'Deep cushions', 'Sturdy'] },
+                { id: 18, name: 'SS MAC L SHAPE', category: 'l-shape', price: 88400, image: productImages[18], wood: 'Solid Wood', fabric: 'Jaguar Fabric', desc: '2+1+CORNER+1 configuration. Size: L 108 x W 84 D 36 (in)', features: ['Modular', 'High end', 'Sleek'] },
+                { id: 19, name: 'JORDAN L SHAPE', category: 'sofa-set', price: 83200, image: productImages[19], wood: 'Solid Wood', fabric: 'Nova Fabric', desc: 'Full set. 3 Seater (L 90) + 1 Seater + 1 Seater.', features: ['Complete set', 'Sustainably sourced', 'Modern'] },
+                { id: 20, name: 'JAGUAR L SHAPE 2+1+CORNER+1', category: 'sofa-set', price: 70500, image: productImages[20], wood: 'Solid Wood', fabric: 'Bristol Fabric', desc: '3 Seater + 1 Seater + 1 Seater. Premium wooden base.', features: ['Classic set', 'Durable', 'Affordable luxury'] },
+                { id: 21, name: 'SS OYSTER 3+2+2', category: 'sofa-set', price: 78000, image: productImages[21], wood: 'Solid Wood', fabric: 'Bolton Fabric', desc: 'Full sofa set. Size: L 108 x W 84 D 36 (in) for set layout.', features: ['Simple', 'Elegant', 'Solid Wood'] },
+                { id: 22, name: 'NOVA 3+1+1', category: 'sofa-set', price: 49400, image: productImages[22], wood: 'Solid Wood', fabric: 'Juniper Fabric', desc: 'Juniper set. Size: L 109 x W 84 D 36 (in) for set layout.', features: ['Extra seating', 'Cozy', 'Modern'] },
+                { id: 23, name: 'BOLTON 3+1+1', category: 'sofa-set', price: 35000, image: productImages[23], wood: 'Solid Wood', fabric: 'Ontario Fabric', desc: 'Ontario series. Size: L 109 x W 84 D 36 (in) for set layout.', features: ['Clean lines', 'Sturdy', 'Premium'] },
+                { id: 24, name: 'JUNIPER 3+2+2', category: 'sofa-set', price: 36000, image: productImages[24], wood: 'Solid Wood', fabric: 'Vegas Fabric', desc: 'Vegas luxury set. Size: L 108 x W 84 D 36 (in) for some layout.', features: ['Vibrant', 'Comfortable', 'Modern'] },
+                { id: 25, name: 'VEGAS 3+1+1', category: 'l-shape', price: 42500, image: productImages[25], wood: 'Solid Wood', fabric: 'Cappuccino Fabric', desc: 'Cappuccino value L-shape. 3 Seater + 2 Seater layout.', features: ['Warm colors', 'Comfortable', 'Sturdy'] },
+                { id: 26, name: 'BRISTOL 3+1+1', category: 'sofa-set', price: 36000, image: productImages[26], wood: 'Solid Wood', fabric: 'Signature Fabric', desc: 'Signature grand set. Size: L 108 x W 84 D 36 (in) for set layout.', features: ['Premium', 'Grand design', 'Deep cushions'] },
+                { id: 27, name: 'CAPPUCCINO L SHАРЕ', category: 'l-shape', price: 42500, image: productImages[27], wood: 'Solid Wood', fabric: 'Coral Fabric', desc: 'Coral V2 design. High quality wooden frame.', features: ['Updated design', 'Strong build', 'Modern'] },
+                { id: 28, name: 'ONTARIO3+1+1', category: 'l-shape', price: 36000, image: productImages[28], wood: 'Solid Wood', fabric: 'Mareena Fabric', desc: 'Mareena series. Size: L 108 x W 84 D 36 (in)', features: ['Elegant', 'Soft touch', 'Reliable'] },
+                { id: 29, name: 'SIGNATURE 3+2+2', category: 'sofa-set', price: 83200, image: productImages[29], wood: 'Solid Wood', fabric: 'Lara Fabric', desc: 'Lara Plus set. 3 Seater (L 90) + 1 Seater + 1 Seater.', features: ['Extra comfort', 'Solid Wood', 'Modern'] },
+                { id: 30, name: 'CORAL L SHAPE', category: 'l-shape', price: 75400, image: productImages[30], wood: 'Solid Wood', fabric: 'Carnival Fabric', desc: 'Carnival theme L-shape. Size: L 108 x W 84 D 36 (in)', features: ['Vibrant', 'Fun', 'Comfortable'] },
+                { id: 31, name: 'CARNIVAL L SHAPЕ', category: 'sofa-set', price: 70500, image: productImages[31], wood: 'Solid Wood', fabric: 'Premium Fabric', desc: 'Versatile Sofa Cum Bed. Ideal for space saving.', features: ['Space saving', 'Dual function', 'Sturdy'] },
+                { id: 32, name: 'LARA PLUS 3+1+1', category: 'sofa-set', price: 48000, image: productImages[32], wood: 'Solid Wood', fabric: 'Newby Fabric', desc: '3 Seater (L 72) + 1 Seater (L 36). Modern Newby series.', features: ['Modern', 'Compact', 'Solid build'] },
+                { id: 33, name: 'MAREENA L SHAPЕ', category: 'l-shape', price: 58000, image: productImages[33], wood: 'Solid Wood', fabric: 'Couch Fabric', desc: 'Comfortable L-Couch. Size: L 108 x D 70 (in)', features: ['Deep seating', 'Lounge focus', 'Premium'] },
+                { id: 34, name: 'GATSBY', category: 'sofa-set', price: 46800, image: productImages[34], wood: 'Solid Wood', fabric: 'Cruise Fabric', desc: 'Cruise series sofa set. Classic and comfortable.', features: ['Classic', 'Reliable', 'Premium'] },
+                { id: 35, name: 'NEWBY', category: 'sofa-set', price: 45600, image: productImages[35], wood: 'Solid Wood', fabric: 'Gatsby Fabric', desc: '3 Seater (L 72) + 1 Seater (L 36). Art deco inspired.', features: ['Art deco', 'Luxury', 'Solid Wood'] },
+                { id: 36, name: 'EL TOP SOFA CUM BED', category: 'sofa-set', price: 67600, image: productImages[36], wood: 'Solid Wood', fabric: 'Knight Fabric', desc: '3 Seater (L 74) + 1 Seater (L 36). Strong and bold.', features: ['Strong', 'Bold design', 'Durable'] },
+                { id: 37, name: 'L COUCH', category: 'sofa-set', price: 60500, image: productImages[37], wood: 'Solid Wood', fabric: 'Casper Fabric', desc: 'Large Casper set. Size: L 111 x B 91 x D 35 (in)', features: ['Ultra spacious', 'Premium', 'Modern'] },
+                { id: 38, name: 'CRUISE', category: 'sofa-set', price: 46800, image: productImages[38], wood: 'Solid Wood', fabric: 'Rocky Fabric', desc: 'Rocky value series. Size: L 74 x D 35 (in)', features: ['Value', 'Solid', 'Modern'] },
+                { id: 39, name: 'KNIGHT', category: 'sofa-set', price: 38400, image: productImages[39], wood: 'Solid Wood', fabric: 'Dream Fabric', desc: 'Dream series value set. Affordable comfort.', features: ['Budget friendly', 'Soft', 'Reliable'] },
+                { id: 40, name: 'CASPER', category: 'sofa-set', price: 88400, image: productImages[40], wood: 'Solid Wood', fabric: 'Gerena Fabric', desc: 'Premium Gerena sofa set. Full luxury.', features: ['Top tier', 'Handmade', 'Solid Wood'] },
+                { id: 41, name: 'DREAM ON', category: 'l-shape', price: 36000, image: productImages[41], wood: 'Solid Wood', fabric: 'Planet Fabric', desc: 'Planet series L-shape. Size: L 99 x B 79 x D 32 (in)', features: ['Modern', 'Ergonomic', 'Durable'] },
+                { id: 42, name: 'PLANET', category: 'l-shape', price: 67600, image: productImages[42], wood: 'Solid Wood', fabric: 'Arian Fabric', desc: 'Arian premium series. Size: L 109 x W 84 D 36 (in)', features: ['Sleek', 'Premium', 'Solid Wood'] },
+                { id: 43, name: 'ROCKY', category: '3-seater', price: 23000, image: productImages[43], wood: 'Solid Wood', fabric: 'Bombay Brown', desc: 'Individual 3 Seater. Size: L 72 X D 36 (in)', features: ['Single piece', 'Solid wood', 'Classic'] }
+            ];
+
+            // ============ STATE ============
+            let wishlist = JSON.parse(localStorage.getItem('woodnest_wishlist') || '[]');
+            let currentProductId = 0;
+            let currentQuickViewId = null;
+            let currentFilter = 'all';
+            let locomotiveScrollInstance = null;
+
+            // ============ LOCOMOTIVE SCROLL INIT ============
+            function initLocomotive() {
+                if (locomotiveScrollInstance) {
+                    locomotiveScrollInstance.destroy();
+                }
+                const scrollContainer = document.querySelector('#smoothScroll [data-scroll-container]');
+                if (!scrollContainer) return;
+                locomotiveScrollInstance = new LocomotiveScroll({
+                    el: scrollContainer,
+                    smooth: true,
+                    lerp: 0.08,
+                    multiplier: 1.0,
+                    smartphone: { smooth: true },
+                    tablet: { smooth: true },
+                });
+                // Refresh ScrollTrigger after Locomotive updates
+                locomotiveScrollInstance.on('scroll', () => {
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+                });
+                if (typeof ScrollTrigger !== 'undefined') {
+                    ScrollTrigger.scrollerProxy(scrollContainer, {
+                        scrollTop(value) {
+                            return arguments.length ?
+                                locomotiveScrollInstance.scrollTo(value, { duration: 0,
+                                    disableLerp: true }) :
+                                locomotiveScrollInstance.scroll.instance.scroll.y;
+                        },
+                        getBoundingClientRect() { return { top: 0, left: 0, width: window.innerWidth,
+                                height: window.innerHeight }; },
+                        pinType: 'transform'
+                    });
+                    ScrollTrigger.refresh();
+                }
+            }
+
+            // ============ NAVIGATION ============
+            function navigateTo(page) {
+                document.querySelectorAll('.page').forEach(p => {
+                    p.classList.remove('active');
+                    p.removeAttribute('data-scroll-section');
+                });
+                const targetPage = document.getElementById('page-' + page);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    targetPage.setAttribute('data-scroll-section', '');
+                }
+                // Update nav active
+                document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('active'));
+                const navLink = document.querySelector(`.nav-links a[data-page="${page}"]`);
+                if (navLink) navLink.classList.add('active');
+                // Update header
+                const header = document.getElementById('header');
+                if (page === 'home') {
+                    header.classList.remove('scrolled');
+                } else {
+                    header.classList.add('scrolled');
+                }
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (locomotiveScrollInstance) {
+                    locomotiveScrollInstance.scrollTo(0, { duration: 0.6 });
+                }
+                // Re-render pages
+                if (page === 'shop') renderAllProducts();
+                if (page === 'wishlist') renderWishlist();
+                if (page === 'home') renderFeaturedProducts();
+                // Re-init locomotive after DOM changes
+                setTimeout(() => {
+                    if (locomotiveScrollInstance) locomotiveScrollInstance.update();
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                }, 400);
+                // Close mobile menu
+                closeMobileMenu();
+                // Re-init animations
+                setTimeout(initScrollAnimations, 500);
+            }
+            window.navigateTo = navigateTo;
+
+            // ============ MOBILE MENU ============
+            function toggleMobileMenu() {
+                document.getElementById('mobileMenu').classList.toggle('open');
+                document.getElementById('overlay').classList.toggle('active');
+            }
+
+            function closeMobileMenu() {
+                document.getElementById('mobileMenu').classList.remove('open');
+                document.getElementById('overlay').classList.remove('active');
+            }
+            window.toggleMobileMenu = toggleMobileMenu;
+            window.closeMobileMenu = closeMobileMenu;
+            document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+
+            // ============ RENDER PRODUCT CARD ============
+            function createProductCard(product) {
+                const isLiked = wishlist.includes(product.id);
+                const card = document.createElement('div');
+                card.className = 'product-card tilt-container';
+                card.setAttribute('data-category', product.category);
+                card.setAttribute('data-fabric', product.fabric);
+                card.setAttribute('data-color', product.color);
+                card.setAttribute('data-id', product.id);
+                card.innerHTML = `
+              <div class="product-card-image">
+                <div class="img-placeholder"><img src="${product.image}" alt="${product.name}" loading="lazy"></div>
+                <span class="product-card-tag">${product.category.replace('-', ' ')}</span>
+                <button class="product-card-wishlist ${isLiked ? 'liked' : ''}" onclick="event.stopPropagation();toggleWishlist(${product.id}, this)" title="Wishlist">${isLiked ? '❤️' : '♡'}</button>
+              </div>
+              <div class="product-card-info" onclick="openProduct(${product.id})">
+                <h3 class="product-card-name">${product.name}</h3>
+                <p class="product-card-category">${product.wood} · ${product.fabric}</p>
+                <p class="product-card-price">₹${product.price.toLocaleString('en-IN')}</p>
+                <div class="product-card-colors">
+                  <span class="color-dot" style="background:${product.color==='brown'?'#8B5E3C':product.color==='black'?'#3A3A3A':product.color==='beige'?'#D6C8B8':'#C49A6C'};"></span>
+                </div>
+                <button class="inquiry-btn" onclick="event.stopPropagation(); window.open('https://wa.me/919832477151?text=' + encodeURIComponent('Hello WoodNest, I am interested in the ${product.name}. Could you provide more details?'), '_blank')">Inquiry</button>
+              </div>`;
+                // 3D tilt
+                const tiltInner = card.querySelector('.product-card-image');
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    card.style.transform =
+                        `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform =
+                        'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                });
+                return card;
+            }
+
+            // ============ PRODUCT PAGE LOGIC ============
+            let currentProduct = null;
+            function openProduct(id) {
+                const product = allProducts.find(p => p.id === id);
+                if (!product) return;
+                currentProduct = product;
+
+                // Populate PDP
+                document.getElementById('pdpName').innerText = product.name;
+                document.getElementById('breadcrumbName').innerText = product.name;
+                document.getElementById('pdpPrice').innerText = `₹${product.price.toLocaleString('en-IN')}`;
+                document.getElementById('pdpCategory').innerText = product.category.replace('-', ' ');
+                document.getElementById('pdpWood').innerText = product.wood;
+                document.getElementById('pdpFabric').innerText = product.fabric;
+                document.getElementById('pdpSize').innerText = product.desc.split('. ')[1] || 'Standard';
+                document.getElementById('pdpDesc').innerText = product.desc;
+                document.getElementById('pdpMedia').innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+
+                // Tech Table
+                document.getElementById('pdpModelNum').innerText = `WN-${100 + product.id}`;
+                document.getElementById('pdpMaterialTech').innerText = product.wood;
+                document.getElementById('pdpFabricTech').innerText = product.fabric;
+                document.getElementById('pdpCapacityTech').innerText = product.category.includes('l-shape') ? '5-7 Seater' : product.category.replace('-', ' ');
+
+                // Reset Thumbnails
+                const thumbs = document.querySelectorAll('.thumb');
+                thumbs.forEach((t, idx) => {
+                    t.classList.remove('active');
+                    if (idx === 0) t.classList.add('active');
+                });
+
+                const featuresList = document.getElementById('pdpFeatures');
+                featuresList.innerHTML = product.features.map(f => `<li>${f}</li>`).join('');
+
+                const wishlistBtn = document.getElementById('pdpWishlistBtn');
+                const isWishlisted = wishlist.includes(id);
+                wishlistBtn.innerText = isWishlisted ? '❤️ Remove from Wishlist' : '♡ Add to Wishlist';
+                
+                renderRelatedProducts(product.category, id);
+                navigateTo('product');
+            }
+
+            function changePdpImage(el) {
+                document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+                document.getElementById('pdpMedia').innerHTML = el.innerHTML;
+            }
+
+            function renderRelatedProducts(category, currentId) {
+                const container = document.getElementById('pdpRelatedGrid');
+                if (!container) return;
+                container.innerHTML = '';
+                const related = allProducts
+                    .filter(p => p.category === category && p.id !== currentId)
+                    .slice(0, 4);
+                
+                // If not enough related in same category, pick random
+                if (related.length < 4) {
+                    const extra = allProducts
+                        .filter(p => p.id !== currentId && !related.includes(p))
+                        .slice(0, 4 - related.length);
+                    related.push(...extra);
+                }
+
+                related.forEach(p => container.appendChild(createProductCard(p)));
+            }
+
+            function toggleWishlistPDP() {
+                if (!currentProduct) return;
+                const id = currentProduct.id;
+                const index = wishlist.indexOf(id);
+                if (index > -1) {
+                    wishlist.splice(index, 1);
+                    showToast('Removed from wishlist');
+                } else {
+                    wishlist.push(id);
+                    showToast('Added to wishlist');
+                }
+                localStorage.setItem('woodnest_wishlist', JSON.stringify(wishlist));
+                updateWishlistCount();
+                
+                // Refresh UI
+                const btn = document.getElementById('pdpWishlistBtn');
+                const isWishlisted = wishlist.includes(id);
+                btn.innerText = isWishlisted ? '❤️ Remove from Wishlist' : '♡ Add to Wishlist';
+                btn.className = isWishlisted ? 'btn btn-outline btn-ripple' : 'btn btn-primary btn-ripple';
+            }
+
+            function contactSales() {
+                if (!currentProduct) return;
+                const message = `Hello WoodNest, I am interested in the ${currentProduct.name} (₹${currentProduct.price.toLocaleString('en-IN')}). Could you provide more details?`;
+                window.open(`https://wa.me/919832477151?text=${encodeURIComponent(message)}`, '_blank');
+            }
+
+            // ============ RENDER FUNCTIONS ============
+            function renderFeaturedProducts() {
+                const container = document.getElementById('featuredProducts');
+                if (!container) return;
+                container.innerHTML = '';
+                const featured = allProducts.slice(0, 6);
+                featured.forEach(p => container.appendChild(createProductCard(p)));
+            }
+
+            function renderAllProducts(filter = 'all') {
+                const container = document.getElementById('allProductsGrid');
+                if (!container) return;
+                container.innerHTML = '';
+                let filtered = allProducts;
+                if (filter !== 'all') {
+                    filtered = allProducts.filter(p =>
+                        p.category === filter || p.fabric === filter || p.color === filter
+                    );
+                }
+                filtered.forEach(p => container.appendChild(createProductCard(p)));
+            }
+
+            function renderWishlist() {
+                const container = document.getElementById('wishlistGrid');
+                const emptyMsg = document.getElementById('wishlistEmpty');
+                if (!container) return;
+                container.innerHTML = '';
+                const items = allProducts.filter(p => wishlist.includes(p.id));
+                if (items.length === 0) {
+                    if (emptyMsg) emptyMsg.style.display = 'block';
+                } else {
+                    if (emptyMsg) emptyMsg.style.display = 'none';
+                    items.forEach(p => container.appendChild(createProductCard(p)));
+                }
+            }
+
+            function updateWishlistCount() {
+                const count = wishlist.length;
+                const badges = document.querySelectorAll('#wishlistCount, #mobileWishlistCount');
+                badges.forEach(b => {
+                    if (b) b.textContent = count;
+                });
+                const badge = document.getElementById('wishlistCount');
+                if (badge && count > 0) {
+                    badge.classList.add('pulse');
+                    setTimeout(() => badge.classList.remove('pulse'), 400);
+                }
+            }
+
+            // ============ WISHLIST LOGIC ============
+            function toggleWishlist(productId, btnElement) {
+                const index = wishlist.indexOf(productId);
+                if (index > -1) {
+                    wishlist.splice(index, 1);
+                    if (btnElement) btnElement.classList.remove('liked');
+                    if (btnElement) btnElement.innerHTML = '♡';
+                    showToast('Removed from Wishlist');
+                } else {
+                    wishlist.push(productId);
+                    if (btnElement) btnElement.classList.add('liked');
+                    if (btnElement) btnElement.innerHTML = '❤️';
+                    showToast('Added to Wishlist! ♡');
+                }
+                localStorage.setItem('woodnest_wishlist', JSON.stringify(wishlist));
+                updateWishlistCount();
+                // Refresh current page
+                const activePage = document.querySelector('.page.active');
+                if (activePage && activePage.id === 'page-wishlist') renderWishlist();
+                if (activePage && activePage.id === 'page-shop') renderAllProducts(currentFilter);
+                if (activePage && activePage.id === 'page-home') renderFeaturedProducts();
+            }
+            window.toggleWishlist = toggleWishlist;
+
+            function addToWishlist(productId) {
+                if (!wishlist.includes(productId)) {
+                    wishlist.push(productId);
+                    localStorage.setItem('woodnest_wishlist', JSON.stringify(wishlist));
+                    updateWishlistCount();
+                }
+            }
+            window.addToWishlist = addToWishlist;
+
+            // ============ QUICK VIEW ============
+            function openQuickView(productId) {
+                currentQuickViewId = productId;
+                const product = allProducts.find(p => p.id === productId);
+                if (!product) return;
+                document.getElementById('qvImage').innerHTML = `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`;
+                document.getElementById('qvName').textContent = product.name;
+                document.getElementById('qvPrice').textContent = '₹' + product.price.toLocaleString('en-IN');
+                document.getElementById('qvDesc').textContent = product.desc;
+                const qvBtn = document.getElementById('qvWishlistBtn');
+                qvBtn.textContent = wishlist.includes(productId) ? '❤️ In Wishlist' : '♡ Add to Wishlist';
+                document.getElementById('quickViewModal').classList.add('active');
+            }
+            window.openQuickView = openQuickView;
+
+            function closeQuickView() {
+                document.getElementById('quickViewModal').classList.remove('active');
+                currentQuickViewId = null;
+            }
+            window.closeQuickView = closeQuickView;
+
+            function quickViewAddWishlist() {
+                if (currentQuickViewId !== null) {
+                    addToWishlist(currentQuickViewId);
+                    document.getElementById('qvWishlistBtn').textContent = '❤️ In Wishlist';
+                    showToast('Added to Wishlist! ♡');
+                    updateWishlistCount();
+                }
+            }
+            window.quickViewAddWishlist = quickViewAddWishlist;
+
+            // Close modal on overlay click
+            document.getElementById('quickViewModal').addEventListener('click', function(e) {
+                if (e.target === this) closeQuickView();
+            });
+
+            // ============ FILTER ============
+            function filterProducts(filter, btnElement) {
+                currentFilter = filter;
+                renderAllProducts(filter);
+                // Update active buttons
+                document.querySelectorAll('#filterBar .filter-btn').forEach(b => b.classList.remove(
+                'active'));
+                document.querySelectorAll('#filterBar .color-filter').forEach(c => c.classList.remove(
+                'active'));
+                if (btnElement) btnElement.classList.add('active');
+                // If it's a color filter
+                if (['brown', 'black', 'beige', 'tan'].includes(filter)) {
+                    document.querySelectorAll('#filterBar .color-filter').forEach(c => {
+                        if (c.style.background.toLowerCase().includes(filter) || (filter ===
+                                'brown' && c.style.background === 'rgb(139, 94, 60)') || (
+                                filter === 'black' && c.style.background === 'rgb(58, 58, 58)') ||
+                            (filter === 'beige' && c.style.background === 'rgb(214, 200, 184)') ||
+                            (filter === 'tan' && c.style.background === 'rgb(196, 154, 108)')) {
+                            c.classList.add('active');
+                        }
+                    });
+                }
+            }
+            window.filterProducts = filterProducts;
+
+            // ============ TOAST ============
+            function showToast(message) {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.textContent = message;
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+            window.showToast = showToast;
+
+            // ============ PRODUCT DETAIL PAGE ============
+            function openProductDetail(productId) {
+                currentProductId = productId;
+                const product = allProducts.find(p => p.id === productId);
+                if (!product) return;
+                document.getElementById('productMainImage').innerHTML = `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;">`;
+                document.getElementById('productTag').textContent = product.category.replace('-', ' ');
+                document.getElementById('productName').textContent = product.name;
+                document.getElementById('productPrice').textContent = '₹' + product.price.toLocaleString(
+                'en-IN');
+                document.getElementById('productDesc').textContent = product.desc;
+                const featuresList = document.getElementById('productFeatures');
+                featuresList.innerHTML = product.features.map(f => `<li>${f}</li>`).join('');
+                const gallery = document.getElementById('productGallery');
+                gallery.innerHTML = '';
+                const thumbEmojis = [product.emoji, '🪵', '🧵', '✨'];
+                thumbEmojis.forEach((emoji, i) => {
+                    const thumb = document.createElement('div');
+                    thumb.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+                    if (i === 0) {
+                        thumb.innerHTML = `<img src="${product.image}" alt="thumb" style="width:100%;height:100%;object-fit:cover;">`;
+                    } else {
+                        thumb.textContent = emoji;
+                    }
+                    thumb.style.background = '#e8e4df';
+                    thumb.onclick = () => {
+                        document.getElementById('productMainImage').innerHTML = thumb.innerHTML;
+                        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList
+                            .remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    gallery.appendChild(thumb);
+                });
+                navigateTo('product');
+            }
+            window.openProductDetail = openProductDetail;
+
+            // Attach product detail navigation to card info clicks
+            document.addEventListener('click', function(e) {
+                const cardInfo = e.target.closest('.product-card-info');
+                if (cardInfo) {
+                    const card = cardInfo.closest('.product-card');
+                    if (card) {
+                        const productId = parseInt(card.getAttribute('data-id'));
+                        if (!isNaN(productId)) {
+                            openProductDetail(productId);
+                        }
+                    }
+                }
+            });
+
+            // ============ SCROLL ANIMATIONS (GSAP) ============
+            function initScrollAnimations() {
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+                // Kill old triggers
+                ScrollTrigger.getAll().forEach(t => t.kill());
+
+                const scroller = document.querySelector('#smoothScroll [data-scroll-container]');
+
+                // Fade up on scroll with a slight scale
+                gsap.utils.toArray('[data-scroll]').forEach(el => {
+                    gsap.fromTo(el, { opacity: 0, y: 60, scale: 0.95 }, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            scroller: scroller,
+                            start: 'top 90%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    });
+                });
+
+                // Product cards stagger with 3D entrance
+                gsap.utils.toArray('.products-grid').forEach(grid => {
+                    const cards = grid.querySelectorAll('.product-card');
+                    gsap.fromTo(cards, { opacity: 0, y: 100, rotationX: -15 }, {
+                        opacity: 1,
+                        y: 0,
+                        rotationX: 0,
+                        duration: 1.2,
+                        stagger: 0.1,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: grid,
+                            scroller: scroller,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    });
+                });
+                
+                initMagneticButtons();
+            }
+
+            // Magnetic Button Effect
+            function initMagneticButtons() {
+                if (typeof gsap === 'undefined') return;
+                const btns = document.querySelectorAll('.btn-ripple');
+                btns.forEach(btn => {
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        gsap.to(btn, {
+                            x: x * 0.4,
+                            y: y * 0.4,
+                            duration: 0.4,
+                            ease: 'power2.out'
+                        });
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        gsap.to(btn, {
+                            x: 0,
+                            y: 0,
+                            duration: 0.7,
+                            ease: 'elastic.out(1.2, 0.4)'
+                        });
+                    });
+                });
+            }
+
+            // ============ HERO ANIMATION ============
+            function animateHero() {
+                if (typeof gsap === 'undefined') return;
+                const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+                
+                tl.fromTo('.hero-tagline', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, delay: 0.2 })
+                    .fromTo('.hero-title .line span', { y: '100%', rotate: 5 }, { y: 0, rotate: 0, duration: 1.6, stagger: 0.2 }, '-=0.6')
+                    .to('.hero-content .btn', { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.15 }, '-=1.2')
+                    .to('.scroll-indicator', { opacity: 1, y: 0, duration: 1 }, '-=0.8');
+            }
+
+            let sliderInterval;
+            function initHeroSlider() {
+                const slides = document.querySelectorAll('.hero-slide');
+                const dots = document.querySelectorAll('.indicator-dot');
+                if (!slides.length) return;
+                let currentSlide = 0;
+
+                window.goToSlide = function(index) {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+                    currentSlide = index;
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                    resetSliderInterval();
+                };
+
+                function resetSliderInterval() {
+                    clearInterval(sliderInterval);
+                    sliderInterval = setInterval(() => {
+                        goToSlide((currentSlide + 1) % slides.length);
+                    }, 6000);
+                }
+
+                resetSliderInterval();
+            }
+
+            // ============ HEADER SCROLL ============
+            function handleHeaderScroll() {
+                const header = document.getElementById('header');
+                const activePage = document.querySelector('.page.active');
+                if (!activePage) return;
+                if (activePage.id === 'page-home') {
+                    const scrollY = window.scrollY;
+                    if (scrollY > 80) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                } else {
+                    header.classList.add('scrolled');
+                }
+            }
+
+            // ============ MOUSE LIGHT EFFECT ============
+            const lightFollow = document.getElementById('lightFollow');
+            let mouseX = 0,
+                mouseY = 0;
+            let lightVisible = false;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (!lightVisible) {
+                    lightVisible = true;
+                    lightFollow.classList.add('visible');
+                }
+                lightFollow.style.left = mouseX + 'px';
+                lightFollow.style.top = mouseY + 'px';
+            });
+            document.addEventListener('mouseleave', () => {
+                lightVisible = false;
+                lightFollow.classList.remove('visible');
+            });
+
+            // ============ BUTTON RIPPLE ============
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.btn-ripple');
+                if (!btn) return;
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                btn.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+
+            // ============ HERO PARTICLES CANVAS ============
+            function initParticles() {
+                const canvas = document.getElementById('heroParticles');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+                const particles = [];
+                for (let i = 0; i < 40; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        r: Math.random() * 1 + 0.5,
+                        vx: (Math.random() - 0.5) * 0.2,
+                        vy: (Math.random() - 0.5) * 0.2,
+                        opacity: Math.random() * 0.3 + 0.05
+                    });
+                }
+
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particles.forEach(p => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        if (p.x < 0) p.x = canvas.width;
+                        if (p.x > canvas.width) p.x = 0;
+                        if (p.y < 0) p.y = canvas.height;
+                        if (p.y > canvas.height) p.y = 0;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(214,167,122,${p.opacity})`;
+                        ctx.fill();
+                    });
+                    requestAnimationFrame(animate);
+                }
+                animate();
+                window.addEventListener('resize', () => {
+                    canvas.width = canvas.parentElement.offsetWidth;
+                    canvas.height = canvas.parentElement.offsetHeight;
+                });
+            }
+
+            // ============ INIT ============
+            function init() {
+                renderFeaturedProducts();
+                updateWishlistCount();
+                initLocomotive();
+                initParticles();
+                initHeroSlider();
+                setTimeout(animateHero, 300);
+                setTimeout(initScrollAnimations, 800);
+                window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    if (locomotiveScrollInstance) locomotiveScrollInstance.update();
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+                // Initial header state
+                handleHeaderScroll();
+            }
+
+            // Start
+            document.addEventListener('DOMContentLoaded', init);
+
+            // Expose for inline onclick
+            window.toggleWishlist = toggleWishlist;
+            window.addToWishlist = addToWishlist;
+            window.openQuickView = openQuickView;
+            window.closeQuickView = closeQuickView;
+            window.quickViewAddWishlist = quickViewAddWishlist;
+            window.filterProducts = filterProducts;
+            window.showToast = showToast;
+            window.openProductDetail = openProductDetail;
+        })();
+    </script>
+</body>
+</html>
