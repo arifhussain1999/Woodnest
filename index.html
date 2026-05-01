@@ -77,12 +77,12 @@
 
         /* LOCOMOTIVE SCROLL CONTAINER */
         .smooth-scroll {
-            position: fixed;
+            position: relative;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            overflow: hidden;
+            height: auto;
+            overflow: visible;
             background: var(--bg);
         }
 
@@ -1745,10 +1745,13 @@
 
     <!-- HEADER -->
     <header class="header" id="header">
-        <div class="logo-group" onclick="window.location.href='index.html'" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-            <img src="asset/logo.png" alt="WoodNest Logo" style="height: 55px; width: auto; object-fit: contain;">
+        <div class="logo-group" onclick="window.location.href='index.html'"
+            style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <img src="asset/logo.png" alt="WoodNest Logo" style="height: 120px; width: auto; object-fit: contain;">
             <div class="logo-text" style="line-height: 1.2;">
-                <span class="tagline" style="display: block; font-size: 0.65rem; color: #888; letter-spacing: 1px; text-transform: uppercase;">Best Sofa in Siliguri</span>
+                <span class="tagline"
+                    style="display: block; font-size: 0.65rem; color: #888; letter-spacing: 1px; text-transform: uppercase;">Best
+                    Sofa in Siliguri</span>
             </div>
         </div>
         <nav>
@@ -1776,10 +1779,10 @@
 
     <!-- MAIN SCROLL CONTAINER -->
     <div class="smooth-scroll" id="smoothScroll">
-        <div data-scroll-container>
+        <div>
 
             <!-- ============ HOME PAGE ============ -->
-            <div class="page active" id="page-home" data-scroll-section>
+            <div class="page active" id="page-home">
                 <!-- Hero -->
                 <section class="hero" id="heroSection">
                     <div class="hero-image-container" id="heroSlider">
@@ -1824,7 +1827,7 @@
                 </section>
 
                 <!-- Featured Products -->
-                <section data-scroll data-scroll-speed="0.1">
+                <section>
                     <p class="section-tag text-center">Handpicked</p>
                     <h2 class="section-title text-center">Featured Collection</h2>
                     <p class="section-subtitle text-center mx-auto">Our most coveted designs, blending solid wood
@@ -1871,7 +1874,7 @@
                 <!-- Footer -->
                 <footer>
                     <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
-                            style="height: 60px; width: auto;"></div>
+                            style="height: 120px; width: auto;"></div>
                     <div class="footer-grid">
                         <div>
                             <h4>Collections</h4>
@@ -1909,7 +1912,7 @@
             </div>
 
             <!-- ============ SHOP PAGE ============ -->
-            <div class="page" id="page-shop" data-scroll-section>
+            <div class="page" id="page-shop">
                 <div class="shop-header">
                     <h1>Our Collection</h1>
                     <p style="color:#ccc;margin-top:0.5rem;">44 handcrafted wooden sofas</p>
@@ -1928,8 +1931,8 @@
                 <footer>
                     <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                             style="height: 60px; width: auto;"></div>
-                    <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by <a
-                            href="https://nexvoraweb.in" target="_blank"
+                    <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. |
+                        Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank"
                             style="color:var(--maroon);text-decoration:none;font-weight:700;">NexvoraWeb</a></p>
                 </footer>
             </div>
@@ -1937,7 +1940,7 @@
 
 
             <!-- ============ ABOUT PAGE ============ -->
-            <div class="page" id="page-about" data-scroll-section>
+            <div class="page" id="page-about">
                 <div class="about-hero">
                     <h1>Our Story</h1>
                     <p style="color:#ccc;">Crafting timeless wooden furniture since 2024</p>
@@ -1958,54 +1961,79 @@
                 <footer>
                     <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                             style="height: 60px; width: auto;"></div>
-                    <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by <a
-                            href="https://nexvoraweb.in" target="_blank"
+                    <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. |
+                        Crafted with 🤎 by <a href="https://nexvoraweb.in" target="_blank"
                             style="color:var(--maroon);text-decoration:none;font-weight:700;">NexvoraWeb</a></p>
                 </footer>
             </div>
 
             <!-- ============ BLOG PAGE ============ -->
-            <div class="page" id="page-blog" data-scroll-section>
+            <div class="page" id="page-blog">
                 <div class="about-hero">
                     <h1>WoodNest Journal</h1>
                     <p style="color:#ccc;">Insights, Trends & Furniture Care</p>
                 </div>
                 <div class="blog-container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
-                    <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                    <div class="blog-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
                         <!-- Blog Post 1 -->
-                        <div class="blog-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                        <div class="blog-card"
+                            style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
                             <div style="height: 200px; background: #f0f0f0; overflow: hidden;">
-                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.06.jpeg" style="width: 100%; height: 100%; object-cover: cover;">
+                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.06.jpeg"
+                                    style="width: 100%; height: 100%; object-cover: cover;">
                             </div>
                             <div style="padding: 1.5rem;">
-                                <span style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Design Tips</span>
-                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">How to Choose the Right Sofa for Your Living Room</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Selecting the perfect sofa is a balance of comfort, style, and dimensions. Learn the key factors to consider...</p>
-                                <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read More →</a>
+                                <span
+                                    style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Design
+                                    Tips</span>
+                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">How to Choose the Right Sofa for Your
+                                    Living Room</h3>
+                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Selecting the perfect sofa
+                                    is a balance of comfort, style, and dimensions. Learn the key factors to consider...
+                                </p>
+                                <a href="#"
+                                    style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read
+                                    More →</a>
                             </div>
                         </div>
                         <!-- Blog Post 2 -->
-                        <div class="blog-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                        <div class="blog-card"
+                            style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
                             <div style="height: 200px; background: #f0f0f0; overflow: hidden;">
-                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.07.jpeg" style="width: 100%; height: 100%; object-cover: cover;">
+                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.07.jpeg"
+                                    style="width: 100%; height: 100%; object-cover: cover;">
                             </div>
                             <div style="padding: 1.5rem;">
-                                <span style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Maintenance</span>
-                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">Caring for Your Solid Wood Furniture</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Solid wood furniture can last for generations with proper care. Discover the secrets to maintaining its natural luster...</p>
-                                <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read More →</a>
+                                <span
+                                    style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Maintenance</span>
+                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">Caring for Your Solid Wood Furniture
+                                </h3>
+                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Solid wood furniture can
+                                    last for generations with proper care. Discover the secrets to maintaining its
+                                    natural luster...</p>
+                                <a href="#"
+                                    style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read
+                                    More →</a>
                             </div>
                         </div>
                         <!-- Blog Post 3 -->
-                        <div class="blog-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
+                        <div class="blog-card"
+                            style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;">
                             <div style="height: 200px; background: #f0f0f0; overflow: hidden;">
-                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.08.jpeg" style="width: 100%; height: 100%; object-cover: cover;">
+                                <img src="asset/WhatsApp Image 2026-04-30 at 01.12.08.jpeg"
+                                    style="width: 100%; height: 100%; object-cover: cover;">
                             </div>
                             <div style="padding: 1.5rem;">
-                                <span style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Trends</span>
-                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">2024 Interior Design Trends: Minimalist Luxury</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Explore how minimalism is evolving into a more comfortable, textured, and luxurious aesthetic this year...</p>
-                                <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read More →</a>
+                                <span
+                                    style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase;">Trends</span>
+                                <h3 style="margin: 0.5rem 0; font-size: 1.25rem;">2024 Interior Design Trends:
+                                    Minimalist Luxury</h3>
+                                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">Explore how minimalism is
+                                    evolving into a more comfortable, textured, and luxurious aesthetic this year...</p>
+                                <a href="#"
+                                    style="display: inline-block; margin-top: 1rem; color: var(--wood-800); font-weight: 600; text-decoration: none;">Read
+                                    More →</a>
                             </div>
                         </div>
                     </div>
@@ -2013,14 +2041,15 @@
                 <footer>
                     <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                             style="height: 60px; width: auto;"></div>
-                    <p style="font-size:0.8rem;color:#999;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by <a
-                            href="https://nexvoraweb.in" target="_blank"
-                            style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a></p>
+                    <p style="font-size:0.8rem;color:#999;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by
+                        <a href="https://nexvoraweb.in" target="_blank"
+                            style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a>
+                    </p>
                 </footer>
             </div>
 
             <!-- ============ CONTACT PAGE ============ -->
-            <div class="page" id="page-contact" data-scroll-section>
+            <div class="page" id="page-contact">
                 <div class="about-hero">
                     <h1>Contact Us</h1>
                     <p style="color:#ccc;">We'd love to hear from you</p>
@@ -2038,14 +2067,14 @@
             <footer>
                 <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                         style="height: 60px; width: auto;"></div>
-                <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by <a
-                        href="https://nexvoraweb.in" target="_blank"
+                <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted
+                    with 🤎 by <a href="https://nexvoraweb.in" target="_blank"
                         style="color:var(--maroon);text-decoration:none;font-weight:700;">NexvoraWeb</a></p>
             </footer>
         </div>
 
         <!-- ============ PRODUCT DETAIL PAGE ============ -->
-        <div class="page" id="page-product" data-scroll-section>
+        <div class="page" id="page-product">
             <div class="product-pdp-container">
                 <!-- Breadcrumbs -->
                 <nav class="pdp-breadcrumbs">
@@ -2194,8 +2223,8 @@
             <footer>
                 <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                         style="height: 60px; width: auto;"></div>
-                <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by <a
-                        href="https://nexvoraweb.in" target="_blank"
+                <p style="font-size:1.1rem;color:#999;margin-top:1rem;">© 2026 WoodNest. All rights reserved. | Crafted
+                    with 🤎 by <a href="https://nexvoraweb.in" target="_blank"
                         style="color:var(--maroon);text-decoration:none;font-weight:700;">NexvoraWeb</a></p>
             </footer>
         </div>
@@ -2280,46 +2309,47 @@
             }
 
             // ============ NAVIGATION ============
-            function navigateTo(page) {
-                document.querySelectorAll('.page').forEach(p => {
-                    p.classList.remove('active');
-                    p.removeAttribute('data-scroll-section');
-                });
-                const targetPage = document.getElementById('page-' + page);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    targetPage.setAttribute('data-scroll-section', '');
-                }
-                // Update nav active
-                document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('active'));
-                const navLink = document.querySelector(`.nav-links a[data-page="${page}"]`);
-                if (navLink) navLink.classList.add('active');
-                // Update header
-                const header = document.getElementById('header');
-                if (page === 'home') {
-                    header.classList.remove('scrolled');
-                } else {
-                    header.classList.add('scrolled');
-                }
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (locomotiveScrollInstance) {
-                    locomotiveScrollInstance.scrollTo(0, { duration: 0.6 });
-                }
-                // Re-render pages
-                if (page === 'shop') renderAllProducts();
-                if (page === 'wishlist') renderWishlist();
-                if (page === 'home') renderFeaturedProducts();
-                // Re-init locomotive after DOM changes
-                setTimeout(() => {
-                    if (locomotiveScrollInstance) locomotiveScrollInstance.update();
-                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-                }, 400);
-                // Close mobile menu
-                closeMobileMenu();
-                // Re-init animations
-                setTimeout(initScrollAnimations, 500);
-            }
+           function navigateTo(page) {
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+    });
+
+    const targetPage = document.getElementById('page-' + page);
+    if (targetPage) {
+        targetPage.classList.add('active');
+    }
+
+    // Update nav active
+    document.querySelectorAll('.nav-links a[data-page]')
+        .forEach(a => a.classList.remove('active'));
+
+    const navLink = document.querySelector(`.nav-links a[data-page="${page}"]`);
+    if (navLink) navLink.classList.add('active');
+
+    // Update header
+    const header = document.getElementById('header');
+    if (page === 'home') {
+        header.classList.remove('scrolled');
+    } else {
+        header.classList.add('scrolled');
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Re-render pages
+    if (page === 'shop') renderAllProducts();
+    if (page === 'wishlist') renderWishlist();
+    if (page === 'home') renderFeaturedProducts();
+
+    // Refresh GSAP only
+    setTimeout(() => {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    }, 300);
+
+    closeMobileMenu();
+    setTimeout(initScrollAnimations, 400);
+}
             window.navigateTo = navigateTo;
 
             // ============ MOBILE MENU ============
@@ -2347,7 +2377,7 @@
                 card.setAttribute('data-color', product.color);
                 card.setAttribute('data-id', product.id);
                 card.onclick = () => openProduct(product.id);
-                
+
                 card.innerHTML = `
               <div class="product-card-image">
                 <div class="img-placeholder"><img src="${product.images ? product.images[0] : product.image}" alt="${product.name}" loading="lazy"></div>
@@ -2364,20 +2394,36 @@
               </div>`;
                 // 3D tilt
                 const tiltInner = card.querySelector('.product-card-image');
+                let tiltTimeout;
+                let rafId = null;
+                let rect = null;
+
+                card.addEventListener('mouseenter', () => {
+                    rect = card.getBoundingClientRect(); // calculate once
+                });
+
                 card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -8;
-                    const rotateY = ((x - centerX) / centerX) * 8;
-                    card.style.transform =
-                        `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                    if (rafId) return;
+
+                    rafId = requestAnimationFrame(() => {
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+
+                        const rotateX = ((y - centerY) / centerY) * -5;
+                        const rotateY = ((x - centerX) / centerX) * 5;
+
+                        card.style.transform =
+                            `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+                        rafId = null;
+                    });
                 });
                 card.addEventListener('mouseleave', () => {
                     card.style.transform =
-                        'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                        'perspective(1000px) rotateX(0deg) rotateY(0deg)';
                 });
                 return card;
             }
@@ -2620,7 +2666,7 @@
                 // Kill old triggers
                 ScrollTrigger.getAll().forEach(t => t.kill());
 
-                const scroller = document.querySelector('#smoothScroll [data-scroll-container]');
+                const scroller = window;
 
                 // Fade up on scroll with a slight scale
                 gsap.utils.toArray('[data-scroll]').forEach(el => {
@@ -2632,7 +2678,7 @@
                         ease: 'power4.out',
                         scrollTrigger: {
                             trigger: el,
-                            scroller: scroller,
+                            scroller: window,
                             start: 'top 90%',
                             toggleActions: 'play none none reverse',
                         }
@@ -2651,14 +2697,14 @@
                         ease: 'power4.out',
                         scrollTrigger: {
                             trigger: grid,
-                            scroller: scroller,
+                            scroller: window,
                             start: 'top 85%',
                             toggleActions: 'play none none reverse',
                         }
                     });
                 });
 
-                initMagneticButtons();
+
             }
 
             // Magnetic Button Effect
@@ -2823,13 +2869,11 @@
             function init() {
                 renderFeaturedProducts();
                 updateWishlistCount();
-                initLocomotive();
-                initParticles();
                 initHeroSlider();
                 setTimeout(animateHero, 300);
                 setTimeout(initScrollAnimations, 800);
                 window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-                
+
                 // Handle initial hash navigation
                 const hash = window.location.hash.substring(1);
                 if (hash) {
@@ -2852,7 +2896,7 @@
                 });
                 // Initial header state
                 handleHeaderScroll();
-                
+
                 // Set initial theme
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 if (savedTheme === 'dark') document.documentElement.classList.add('dark');
