@@ -666,177 +666,185 @@
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.8s var(--transition);
+            transition: all 0.7s var(--transition);
             position: relative;
-            box-shadow: var(--soft-shadow);
-            transform-style: preserve-3d;
-            perspective: 1200px;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.02),
+                0 15px 40px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            box-shadow: var(--hover-shadow);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                0 40px 100px rgba(93, 10, 30, 0.08);
             transform: translateY(-12px);
             border-color: var(--accent);
         }
 
         .product-card-image {
             width: 100%;
-            aspect-ratio: 1/1;
-            /* Square for a more modern e-commerce look */
-            background: #f0f0f0;
+            aspect-ratio: 1/1.1;
+            background: #f8f8f8;
             position: relative;
             overflow: hidden;
-        }
-
-        /* Luxury Shimmer Effect */
-        .product-card-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.8s;
-            z-index: 1;
-        }
-
-        .product-card:hover .product-card-image::after {
-            left: 150%;
-        }
-
-        .product-card-image .img-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
-            position: relative;
         }
 
         .product-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s var(--transition);
+            transition: transform 1.2s var(--transition);
         }
 
         .product-card:hover .product-card-image img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .product-card-tag {
             position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--black);
-            color: #fff;
-            font-size: 0.7rem;
-            padding: 0.3rem 0.9rem;
-            letter-spacing: 1.5px;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--maroon);
+            font-size: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: 'Inter', sans-serif;
             z-index: 2;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .product-card-badge {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            background: var(--maroon);
+            color: #fff;
+            font-size: 0.55rem;
+            padding: 0.5rem 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 2;
+            font-weight: 600;
             border-radius: 2px;
         }
 
-        .product-card-wishlist {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 38px;
-            height: 38px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 2;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .product-card-wishlist:hover {
-            transform: scale(1.1);
-        }
-
-        .product-card-wishlist.liked {
-            background: #ffe0e0;
-        }
-
         .product-card-info {
-            padding: 1.5rem;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
+            padding: 2.2rem 1.8rem;
+            background: linear-gradient(to bottom, #fff, #fdfbf9);
             position: relative;
             z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s;
+            border-top: 1px solid rgba(197, 160, 89, 0.05);
         }
 
         .product-card-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--black);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
             letter-spacing: -0.2px;
         }
 
         .product-card-category {
-            font-size: 0.78rem;
+            font-size: 0.65rem;
             color: #888;
-            letter-spacing: 0.5px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
+            margin-bottom: 1.8rem;
+            font-weight: 500;
         }
 
         .product-card-price {
             font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.45rem;
             color: var(--maroon);
-            margin-top: 0.6rem;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-card-price span {
+            font-size: 0.75rem;
+            font-style: normal;
+            font-family: 'Inter', sans-serif;
+            color: #aaa;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .product-card-price::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
+            display: inline-block;
         }
 
         .product-card-colors {
             display: flex;
-            gap: 6px;
-            margin-top: 0.8rem;
+            gap: 8px;
+            margin-top: 1.2rem;
         }
 
         .color-dot {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            border: 2px solid #ddd;
-            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .color-dot.active::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
         }
 
         .inquiry-btn {
-            background: var(--maroon);
+            background: var(--black);
             color: #fff;
             border: none;
-            padding: 0.6rem 1rem;
+            padding: 1.1rem;
             font-size: 0.7rem;
             cursor: pointer;
             border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            margin-top: 1rem;
+            letter-spacing: 3px;
+            transition: all 0.5s var(--transition);
+            margin-top: 2rem;
             width: 100%;
-            display: block;
-            font-weight: 600;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover .inquiry-btn {
+            background: var(--maroon);
+            letter-spacing: 4px;
         }
 
         .inquiry-btn:hover {
             background: var(--accent);
-            color: var(--maroon);
-            transform: translateY(-2px);
+            color: var(--black);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
         }
 
         .modal-overlay {
@@ -912,17 +920,32 @@
 
         /* SHOP PAGE */
         .shop-header {
-            padding-top: 8rem;
+            padding-top: 10rem;
             text-align: center;
             background: var(--black);
             color: #fff;
-            padding-bottom: 3rem;
+            padding-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .shop-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
             font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .shop-header p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
 
         .filter-bar {
@@ -1008,13 +1031,35 @@
         }
 
         .testimonial-card {
-            min-width: 340px;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
+            min-width: 380px;
+            background: #FDFBF7; /* Light Champagne */
+            padding: 3rem 2.5rem;
+            border-radius: 4px;
             scroll-snap-align: start;
-            box-shadow: var(--soft-shadow);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(197, 160, 89, 0.15); /* Gold tint border */
             flex-shrink: 0;
+            transition: all 0.5s var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            background: #fff;
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(93, 10, 30, 0.06);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--maroon);
+            opacity: 0.05;
+            line-height: 1;
         }
 
         .testimonial-card .stars {
@@ -2152,10 +2197,24 @@
             <!-- ============ CUSTOMISE PAGE ============ -->
             <div class="page" id="page-customise">
                 <div class="shop-header"
-                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('asset/customise/sofa_8.png'); background-size: cover; background-position: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;">
-                    <h1 style="color: white; font-size: 3.5rem;">Customise Sofa</h1>
-                    <p style="color:#eee;margin-top:0.5rem; max-width: 600px;">Your Vision, Our Craft. Every piece here
-                        can be tailored to your specific taste, dimensions, and fabric choice.</p>
+                    style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('asset/customise/sofa_8.png'); background-size: cover; background-position: center; min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding-top: 11rem; position: relative;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%); pointer-events: none;">
+                    </div>
+                    <span
+                        style="font-family: 'Poppins', sans-serif; font-size: 0.75rem; letter-spacing: 6px; color: var(--accent); text-transform: uppercase; margin-bottom: 1.2rem; display: block; font-weight: 700; position: relative; z-index: 2;">The
+                        Bespoke Experience</span>
+                    <h1
+                        style="color: white; margin-bottom: 1.5rem; font-size: clamp(3rem, 10vw, 5.5rem); position: relative; z-index: 2;">
+                        Customise <span style="font-style: italic; font-weight: 400; color: var(--accent);">Your</span>
+                        Sofa</h1>
+                    <p
+                        style="color: rgba(255,255,255,0.9); line-height: 1.8; max-width: 750px; position: relative; z-index: 2; font-size: 1.15rem;">
+                        Your Vision, Our Craft. Every piece here
+                        is a unique masterpiece, tailored to your exact taste, dimensions, and lifestyle.</p>
+                    <div
+                        style="width: 80px; height: 2px; background: var(--accent); margin-top: 3rem; position: relative; z-index: 2; box-shadow: 0 0 15px var(--accent);">
+                    </div>
                 </div>
 
                 <section style="background: #fff; padding: 5rem 2rem;">
@@ -2470,6 +2529,9 @@
                     </p>
                     <p><em>"Luxury is in the details — the grain of the wood, the stitch of the fabric, the comfort of
                             the cushion."</em></p>
+                    <p style="font-size:0.85rem; color:#888; margin-top:3rem; text-align:center;">
+                        Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank" style="color:var(--maroon); text-decoration:none; font-weight:700;">NexvoraWeb</a>
+                    </p>
                 </div>
 
             </div>
@@ -2545,12 +2607,11 @@
                         </div>
                     </div>
                 </div>
-                <footer>
+                <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); text-align: center;">
                     <div class="footer-logo"><img src="asset/logo.png" alt="WoodNest Logo"
                             style="height: 60px; width: auto;"></div>
-                    <p style="font-size:0.8rem;color:#999;">© 2026 WoodNest. All rights reserved. | Crafted with 🤎 by
-                        <a href="https://www.nexvoraweb.in" target="_blank"
-                            style="color:var(--maroon);text-decoration:none;font-weight:600;">NexvoraWeb</a>
+                    <p style="font-size:0.85rem; color:#888; margin-top:1.5rem;">
+                        Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank" style="color:var(--maroon); text-decoration:none; font-weight:700;">NexvoraWeb</a>
                     </p>
                 </footer>
             </div>
@@ -2617,6 +2678,9 @@
                         No appointment needed.
                     </div>
 
+                    <p style="font-size:0.85rem; color:#888; margin-top:3rem; text-align:center;">
+                        Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank" style="color:var(--maroon); text-decoration:none; font-weight:700;">NexvoraWeb</a>
+                    </p>
                 </div>
 
             </div>
