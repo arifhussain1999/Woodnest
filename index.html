@@ -1081,6 +1081,114 @@
             font-family: 'Playfair Display', serif;
         }
 
+        /* SILIGURI SOFA SEO GUIDE SECTION */
+        .siliguri-sofa-guide {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 6rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .siliguri-sofa-guide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .siliguri-sofa-guide .section-tag {
+            color: var(--accent);
+        }
+
+        .siliguri-sofa-guide .section-title {
+            color: var(--white);
+        }
+
+        .siliguri-sofa-guide .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .guide-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            transition: all 0.4s var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .guide-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-card-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .guide-card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--accent);
+            opacity: 0.6;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .guide-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .guide-card-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .guide-card-text strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .siliguri-sofa-guide .btn-gold {
+            background: var(--accent);
+            color: var(--maroon);
+            font-weight: 600;
+            border-radius: 50px;
+        }
+
+        .siliguri-sofa-guide .btn-gold:hover {
+            background: var(--white);
+            color: var(--maroon);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.15);
+        }
+
         /* FOOTER */
         footer {
             background: var(--white);
@@ -2144,6 +2252,84 @@
                     <div class="text-center" style="margin-top:3rem;">
                         <button class="btn btn-primary btn-ripple" onclick="navigateTo('shop')">View All 44 Sofas
                             →</button>
+                    </div>
+                </section>
+
+                <!-- Sofa Siliguri SEO Guide Section -->
+                <section class="siliguri-sofa-guide">
+                    <div style="max-width: 1200px; margin: 0 auto;">
+                        <p class="section-tag text-center">Siliguri Craftsmanship</p>
+                        <h2 class="section-title text-center">Premium Sofa Collection in Siliguri</h2>
+                        <p class="section-subtitle text-center mx-auto">Discover why WoodNest is the ultimate choice for hand-tailored, durable, and luxurious wooden sofas in North Bengal.</p>
+                        
+                        <div class="guide-grid">
+                            
+                            <!-- Card 1 -->
+                            <div class="guide-card">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="guide-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6" />
+                                            <path d="M3 14h18" />
+                                            <path d="M6 18v2M18 18v2" />
+                                            <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
+                                        </svg>
+                                    </div>
+                                    <span class="guide-card-num">01</span>
+                                </div>
+                                <h3 class="guide-card-title">Best Sofa in Siliguri</h3>
+                                <p class="guide-card-text">Looking for the <strong>best sofa in Siliguri</strong>? WoodNest merges premium comfort with architectural integrity. Each piece features seasoned, insect-resistant hardwoods and high-resiliency cushioning designed to elevate your living space.</p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="guide-card">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="guide-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                            <polyline points="9 22 9 12 15 12 15 22" />
+                                        </svg>
+                                    </div>
+                                    <span class="guide-card-num">02</span>
+                                </div>
+                                <h3 class="guide-card-title">Top Sofa Shops in Siliguri</h3>
+                                <p class="guide-card-text">While traditional <strong>sofa shops in Siliguri</strong> offer cookie-cutter designs, WoodNest operates as a custom manufacturer-direct boutique. Avoid middleman markups found at typical <strong>wooden furniture showrooms in Siliguri</strong> and get premium quality directly from our workshop.</p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="guide-card">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="guide-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                                        </svg>
+                                    </div>
+                                    <span class="guide-card-num">03</span>
+                                </div>
+                                <h3 class="guide-card-title">Customized Sofa Makers</h3>
+                                <p class="guide-card-text">As leading <strong>customized sofa makers in Siliguri</strong>, we bring your vision to life. From custom dimensions to hand-picked fabrics and wood stains, customize your own L-shaped sofa or premium <strong>wooden sofa set in Siliguri</strong> exactly how you want it.</p>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="guide-card">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="guide-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                                            <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <span class="guide-card-num">04</span>
+                                </div>
+                                <h3 class="guide-card-title">Best Sofa Price in Siliguri</h3>
+                                <p class="guide-card-text">Get premium-grade materials without the inflated price tag. We ensure the most competitive <strong>sofa price in Siliguri</strong> by managing the production cycle from timber selection to upholstery, delivering value that lasts for generations.</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="text-center" style="margin-top: 4rem; position: relative; z-index: 2;">
+                            <button class="btn btn-gold btn-ripple" onclick="navigateTo('customise')">Customise Your Sofa</button>
+                        </div>
                     </div>
                 </section>
 
