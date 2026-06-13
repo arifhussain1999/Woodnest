@@ -663,44 +663,70 @@
 // ============ FOOTER LOAD ============
 document.getElementById("footer").innerHTML = `
 <footer>
-    <div class="footer-logo">
-        <img src="asset/logo.png" alt="WoodNest Logo"
-            style="height: 120px; width: auto;">
+    <div class="footer-container">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+            <div class="footer-logo" onclick="navigateTo('home')" style="cursor: pointer;">
+                <img src="asset/logo.png" alt="WoodNest Logo">
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook"><i class="ph-bold ph-facebook-logo"></i></a>
+                <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+                <a href="https://wa.me/919933447711" target="_blank" class="social-link" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+        </div>
+
+        <!-- Links Grid -->
+        <div class="footer-links-grid">
+            <div class="footer-col">
+                <h4>Collections</h4>
+                <ul>
+                    <li onclick="navigateTo('shop'); filterProducts('3-seater')">3-Seater Sofas</li>
+                    <li onclick="navigateTo('shop'); filterProducts('l-shape')">L-Shape Sofas</li>
+                    <li onclick="navigateTo('shop'); filterProducts('2-seater')">2-Seater Sofas</li>
+                    <li onclick="navigateTo('shop'); filterProducts('1-seater')">1-Seater Sofas</li>
+                    <li onclick="navigateTo('shop'); filterProducts('sofa-set')">Sofa Sets</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li onclick="navigateTo('about')">About Us</li>
+                    <li onclick="navigateTo('blog')">Our Journal</li>
+                    <li onclick="navigateTo('customise')">Bespoke Designs</li>
+                    <li onclick="navigateTo('contact')">Contact</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-list">
+                    <li>
+                        <i class="ph-fill ph-map-pin"></i>
+                        <span>Sevoke Road, Siliguri, West Bengal</span>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-phone"></i>
+                        <a href="tel:+919933447711">+91 99334 47711</a>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-envelope"></i>
+                        <a href="mailto:info@woodnest.in">info@woodnest.in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="footer-grid">
-        <div>
-            <h4>Collections</h4>
-            <ul>
-                <li>3-Seater Sofas</li>
-                <li>L-Shape Sofas</li>
-                <li>Loveseats</li>
-                <li>Recliners</li>
-            </ul>
-        </div>
+    <!-- Divider -->
+    <div class="footer-divider"></div>
 
-        <div>
-            <h4>Company</h4>
-            <ul>
-                <li onclick="navigateTo('about')">About Us</li>
-                <li onclick="navigateTo('contact')">Contact</li>
-                <li>Careers</li>
-                <li>Press</li>
-            </ul>
-        </div>
-
-        <div>
-            <h4>Support</h4>
-            <ul>
-                <li>FAQ</li>
-                <li>Shipping</li>
-                <li>Warranty</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); text-align: center; font-size: 0.8rem; color: #999;">
-        <p>© 2026 WoodNest Luxury Furniture. All rights reserved.</p>
-        <p style="margin-top: 1rem;">Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank" style="color:var(--maroon); text-decoration:none; font-weight:700;">NexvoraWeb</a></p>
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <p class="copyright">© 2026 WoodNest Luxury Furniture. All rights reserved.</p>
+        <p class="credits">Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank">NexvoraWeb</a></p>
     </div>
 </footer>
 `;

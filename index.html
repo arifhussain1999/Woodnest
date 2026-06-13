@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         :root {
             --maroon: #5D0A1E;
@@ -998,20 +999,779 @@
             transform: scale(1.15);
         }
 
-        /* ABOUT PAGE */
+        /* ===== ABOUT PAGE — PREMIUM REDESIGN ===== */
         .about-hero {
-            padding-top: 8rem;
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: var(--black);
+            background: linear-gradient(165deg, #0a0a0a 0%, #1a0a10 40%, var(--maroon) 100%);
             color: #fff;
-            padding-bottom: 4rem;
+            padding: 10rem 2rem 6rem;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse 600px 400px at 20% 30%, rgba(197,160,89,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 500px at 80% 70%, rgba(93,10,30,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
+        }
+
+        .about-hero-tag {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-hero-tag::before,
+        .about-hero-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
         }
 
         .about-hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
+        .about-hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 600px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero-scroll {
+            position: absolute;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .about-hero-scroll .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* ABOUT — INTRO STORY */
+        .about-intro {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-intro-visual {
+            position: relative;
+        }
+
+        .about-intro-image {
+            width: 100%;
+            border-radius: 16px;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+
+        .about-intro-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .about-intro-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-intro-content .section-tag-about {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .about-intro-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.3;
+            color: var(--text);
+        }
+
+        .about-intro-content h2 span {
+            color: var(--maroon);
+        }
+
+        .about-intro-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-muted);
+        }
+
+        .about-intro-content p strong {
+            color: var(--text);
+        }
+
+        /* ABOUT — VALUES SECTION */
+        .about-values {
+            background: linear-gradient(180deg, var(--bg) 0%, #f0ece5 100%);
+            padding: 6rem 3rem;
+        }
+
+        .about-values-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 4rem;
+        }
+
+        .about-values-header .section-tag-about {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .about-values-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .about-values-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .about-values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-value-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            transition: all 0.5s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--maroon), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--transition);
+        }
+
+        .about-value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(93,10,30,0.08);
+        }
+
+        .about-value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-value-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(93,10,30,0.08), rgba(197,160,89,0.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+        }
+
+        .about-value-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ABOUT — STATS / COUNTERS */
+        .about-stats {
+            background: var(--black);
+            padding: 5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(93,10,30,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .about-stat-item:last-child {
+            border-right: none;
+        }
+
+        .about-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #e8d5a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-stat-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ABOUT — CRAFTSMANSHIP PROCESS */
+        .about-process {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-process-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 4rem;
+        }
+
+        .about-process-header .section-tag-about {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .about-process-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .about-process-header p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .about-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .about-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--maroon), transparent);
+            transform: translateX(-50%);
+        }
+
+        .about-timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .about-timeline-item:nth-child(even) .about-timeline-content {
+            order: 2;
+            text-align: left;
+        }
+
+        .about-timeline-item:nth-child(even) .about-timeline-visual {
+            order: 1;
+        }
+
+        .about-timeline-item:nth-child(odd) .about-timeline-content {
+            text-align: right;
+        }
+
+        .about-timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg);
+            box-shadow: 0 0 0 3px var(--accent);
+            z-index: 3;
+        }
+
+        .about-timeline-step {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+        }
+
+        .about-timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .about-timeline-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-timeline-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(93,10,30,0.06), rgba(197,160,89,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: var(--maroon);
+            border: 1px solid rgba(197,160,89,0.2);
+        }
+
+        /* ABOUT — QUOTE BANNER */
+        .about-quote {
+            background: linear-gradient(135deg, var(--maroon) 0%, #3a0612 100%);
+            padding: 6rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-quote::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            color: rgba(255,255,255,0.03);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .about-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: #fff;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+        }
+
+        .about-quote cite {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-style: normal;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ABOUT — LOCATION / SILIGURI */
+        .about-location {
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-location-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-location-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-location-content .section-tag-about {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .about-location-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            line-height: 1.3;
+            color: var(--text);
+        }
+
+        .about-location-content p {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text-muted);
+        }
+
+        .about-location-content p strong {
+            color: var(--text);
+        }
+
+        .about-location-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-location-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .about-location-feature i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .about-location-map {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .about-location-map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* ABOUT — CRAFTED BY */
+        .about-crafted-by {
+            text-align: center;
+            padding: 3rem 2rem 4rem;
+            background: var(--bg);
+        }
+
+        .about-crafted-by p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .about-crafted-by a {
+            color: var(--maroon);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ABOUT PAGE — MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-hero {
+                min-height: 55vh;
+                padding: 8rem 1.5rem 5rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .about-hero-scroll {
+                display: none;
+            }
+
+            .about-intro {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-intro-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-intro-accent {
+                display: none;
+            }
+
+            .about-intro-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-values {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .about-values-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .about-values-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-stats {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .about-stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                padding: 1.5rem 0.5rem;
+            }
+
+            .about-stat-item:nth-child(odd) {
+                border-right: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .about-stat-item:nth-child(n+3) {
+                border-bottom: none;
+            }
+
+            .about-stat-number {
+                font-size: 2.2rem;
+            }
+
+            .about-process {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .about-process-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-timeline::before {
+                left: 20px;
+            }
+
+            .about-timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding-left: 50px;
+            }
+
+            .about-timeline-item:nth-child(even) .about-timeline-content,
+            .about-timeline-item:nth-child(odd) .about-timeline-content {
+                text-align: left;
+                order: 1;
+            }
+
+            .about-timeline-item:nth-child(even) .about-timeline-visual,
+            .about-timeline-item:nth-child(odd) .about-timeline-visual {
+                order: 2;
+            }
+
+            .about-timeline-dot {
+                left: 20px;
+                top: 2.5rem;
+                transform: translate(-50%, 0);
+            }
+
+            .about-timeline-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-timeline-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .about-quote {
+                padding: 4rem 1.5rem;
+            }
+
+            .about-location {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .about-location-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-location-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-location-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-location-map iframe {
+                height: 280px;
+            }
+        }
+
+        /* Ensure the old .about-content fallback still works */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -1191,51 +1951,243 @@
 
         /* FOOTER */
         footer {
-            background: var(--white);
-            color: var(--text-muted);
-            padding: 3rem 2rem 1.5rem;
+            background: #0B0B0B;
+            color: #A0A0A0;
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(197, 160, 89, 0.15); /* Muted gold border */
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        footer .footer-logo {
-            margin-bottom: 1.5rem;
-        }
-
-        footer .footer-logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: left;
-            max-width: 1000px;
-            margin: 0 auto 2rem;
         }
 
-        footer .footer-grid h4 {
-            color: var(--black);
+        .footer-brand {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #8C8C8C;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            color: #C5A059; /* Gold */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.4s var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--maroon);
+            color: #fff;
+            border-color: var(--maroon);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(93, 10, 30, 0.3);
+        }
+
+        .footer-links-grid {
+            flex: 2 1 600px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            color: #fff;
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0;
         }
 
-        .footer-grid ul {
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
-        footer .footer-grid ul li {
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
+        .footer-col ul li {
+            font-size: 0.88rem;
+            color: #A0A0A0;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-col ul li:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            line-height: 1.5;
+            color: #A0A0A0;
+            font-size: 0.88rem;
+        }
+
+        .contact-list li i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .contact-list li a {
+            color: #A0A0A0;
+            text-decoration: none;
             transition: color 0.3s;
         }
 
-        footer .footer-grid ul li:hover {
-            color: var(--maroon);
+        .contact-list li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 3rem auto 2rem;
+            max-width: 1200px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.82rem;
+            color: #707070;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 4rem 1.5rem 2rem;
+            }
+            .footer-container {
+                gap: 2.5rem;
+            }
+            .footer-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .footer-col:last-child {
+                grid-column: span 2;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-col ul li:hover {
+                transform: none;
+            }
+
+            /* GUIDE GRID RESPONSIVE OVERRIDES */
+            .siliguri-sofa-guide {
+                padding: 3rem 0.8rem;
+            }
+
+            .guide-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                margin-top: 2rem;
+            }
+
+            .guide-card {
+                padding: 1.25rem 1rem;
+                gap: 0.8rem;
+                border-radius: 6px;
+            }
+
+            .guide-card-icon {
+                font-size: 1.4rem;
+            }
+
+            .guide-card-num {
+                font-size: 0.85rem;
+            }
+
+            .guide-card-title {
+                font-size: 1.05rem;
+            }
+
+            .guide-card-text {
+                font-size: 0.75rem;
+                line-height: 1.5;
+            }
         }
 
         /* PARALLAX */
@@ -1729,6 +2681,18 @@
 
             .product-card-image {
                 aspect-ratio: 1/1;
+            }
+
+            .product-card-badge {
+                display: none;
+            }
+
+            .product-card-tag {
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 0.5rem;
+                padding: 0.3rem 0.6rem;
+                letter-spacing: 1px;
             }
 
             .product-card-info {
@@ -2763,25 +3727,194 @@
 
             <!-- ============ ABOUT PAGE ============ -->
             <div class="page" id="page-about">
+
+                <!-- HERO -->
                 <div class="about-hero">
-                    <h1>Our Story</h1>
-                    <p style="color:#ccc;">Crafting timeless wooden furniture since 2024</p>
+                    <div class="about-hero-tag">
+                        <span>Since 2024</span>
+                    </div>
+                    <h1>The Art of Living,<br>Crafted in Wood</h1>
+                    <p class="about-hero-subtitle">
+                        WoodNest is Siliguri's premier destination for handcrafted, solid wood furniture — where heritage craftsmanship meets modern luxury.
+                    </p>
+                    <div class="about-hero-scroll">
+                        <span>Scroll</span>
+                        <div class="scroll-line"></div>
+                    </div>
                 </div>
-                <div class="about-content">
-                    <p>At <strong>WoodNest</strong>, we believe that furniture is more than just function — it's the
-                        soul of a home. Every sofa we create is a dialogue between nature's finest materials and human
-                        artistry.</p>
-                    <p>Our journey began with a simple vision: to bring the warmth of solid wood into modern living
-                        spaces. We source our timber from sustainable forests, ensuring each piece carries not just
-                        beauty but responsibility.</p>
-                    <p>From the hands of skilled artisans to the heart of your home, every WoodNest sofa undergoes 47
-                        quality checks. The result? Furniture that ages gracefully and tells a story for generations.
-                    </p>
-                    <p><em>"Luxury is in the details — the grain of the wood, the stitch of the fabric, the comfort of
-                            the cushion."</em></p>
-                    <p style="font-size:0.85rem; color:#888; margin-top:3rem; text-align:center;">
-                        Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank" style="color:var(--maroon); text-decoration:none; font-weight:700;">NexvoraWeb</a>
-                    </p>
+
+                <!-- INTRO STORY -->
+                <div class="about-intro">
+                    <div class="about-intro-grid">
+                        <div class="about-intro-visual">
+                            <img src="asset/hero.jpeg" alt="WoodNest handcrafted wooden sofa showroom in Siliguri" class="about-intro-image">
+                            <div class="about-intro-accent"></div>
+                        </div>
+                        <div class="about-intro-content">
+                            <span class="section-tag-about">Our Journey</span>
+                            <h2>More Than Furniture — <span>A Legacy</span></h2>
+                            <p>At <strong>WoodNest</strong>, we believe that a sofa is more than just function — it's the soul of a home. As one of the leading <strong>customised sofa makers in Siliguri</strong>, we specialize in crafting high-end, bespoke solid wood furniture designed to elevate your living spaces.</p>
+                            <p>Our journey started with a simple vision: to offer an alternative to the mass-produced designs in standard <strong>sofa shops in Siliguri</strong>, bringing raw natural beauty and master craftsmanship directly from our workshop to your home.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VALUES -->
+                <div class="about-values">
+                    <div class="about-values-header">
+                        <span class="section-tag-about">What We Stand For</span>
+                        <h2>Built on Principles</h2>
+                        <p>Every piece of furniture leaving our Siliguri workshop carries our core values — quality, honesty, and an unwavering commitment to craftsmanship.</p>
+                    </div>
+                    <div class="about-values-grid">
+                        <div class="about-value-card">
+                            <div class="about-value-icon">
+                                <i class="ph ph-tree-evergreen"></i>
+                            </div>
+                            <h3>100% Solid Wood</h3>
+                            <p>While ordinary showrooms for <strong>wooden furniture in Siliguri</strong> use veneer or engineered wood, we use only seasoned, termite-resistant hardwoods — premium Teak and Sal wood sourced with extreme care.</p>
+                        </div>
+                        <div class="about-value-card">
+                            <div class="about-value-icon">
+                                <i class="ph ph-hand-heart"></i>
+                            </div>
+                            <h3>Master Craftsmanship</h3>
+                            <p>Every <strong>wooden sofa set in Siliguri</strong> we build is custom-engineered to withstand North Bengal's high humidity, ensuring a lifetime of durability without warping or sagging.</p>
+                        </div>
+                        <div class="about-value-card">
+                            <div class="about-value-icon">
+                                <i class="ph ph-crown"></i>
+                            </div>
+                            <h3>Bespoke Luxury</h3>
+                            <p>Recognized among the <strong>best sofa showrooms in Siliguri</strong>, we offer custom fabric selection, cushion density tuning, and perfect dimensions at the best <strong>sofa price in Siliguri</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATS -->
+                <div class="about-stats">
+                    <div class="about-stats-grid">
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">500+</div>
+                            <div class="about-stat-label">Sofas Delivered</div>
+                        </div>
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">47</div>
+                            <div class="about-stat-label">Quality Checks</div>
+                        </div>
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">100%</div>
+                            <div class="about-stat-label">Solid Wood</div>
+                        </div>
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">25+</div>
+                            <div class="about-stat-label">Master Artisans</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRAFTSMANSHIP PROCESS -->
+                <div class="about-process">
+                    <div class="about-process-header">
+                        <span class="section-tag-about">Our Process</span>
+                        <h2>From Raw Wood to Your Home</h2>
+                        <p>Every sofa undergoes a meticulous 4-step journey — handcrafted by local master artisans in Siliguri using time-honoured techniques.</p>
+                    </div>
+                    <div class="about-timeline">
+                        <!-- Step 1 -->
+                        <div class="about-timeline-item">
+                            <div class="about-timeline-content">
+                                <div class="about-timeline-step">Step 01</div>
+                                <h3>Wood Selection</h3>
+                                <p>We handpick seasoned Teak and Sal hardwood from trusted suppliers, ensuring every plank is termite-resistant and perfectly dried for North Bengal's climate.</p>
+                            </div>
+                            <div class="about-timeline-visual">
+                                <div class="about-timeline-icon">🪵</div>
+                            </div>
+                            <div class="about-timeline-dot"></div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="about-timeline-item">
+                            <div class="about-timeline-content">
+                                <div class="about-timeline-step">Step 02</div>
+                                <h3>Frame Engineering</h3>
+                                <p>Our master carpenters hand-join every frame using mortise-and-tenon joints — no nails, no shortcuts. Built to last for generations.</p>
+                            </div>
+                            <div class="about-timeline-visual">
+                                <div class="about-timeline-icon">🔨</div>
+                            </div>
+                            <div class="about-timeline-dot"></div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="about-timeline-item">
+                            <div class="about-timeline-content">
+                                <div class="about-timeline-step">Step 03</div>
+                                <h3>Upholstery & Finishing</h3>
+                                <p>Premium Italian leatherette or handwoven fabrics are carefully stretched and stitched. High-density foam ensures unmatched comfort and shape retention.</p>
+                            </div>
+                            <div class="about-timeline-visual">
+                                <div class="about-timeline-icon">✂️</div>
+                            </div>
+                            <div class="about-timeline-dot"></div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="about-timeline-item">
+                            <div class="about-timeline-content">
+                                <div class="about-timeline-step">Step 04</div>
+                                <h3>Quality Assurance</h3>
+                                <p>Each sofa undergoes 47 rigorous quality checks — stress tests, finish inspection, dimension verification — before white-glove delivery to your doorstep in Siliguri.</p>
+                            </div>
+                            <div class="about-timeline-visual">
+                                <div class="about-timeline-icon">✅</div>
+                            </div>
+                            <div class="about-timeline-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUOTE -->
+                <div class="about-quote">
+                    <blockquote>
+                        "Luxury is in the details — the grain of the wood, the stitch of the fabric, the comfort of the cushion."
+                    </blockquote>
+                    <cite>— The WoodNest Philosophy</cite>
+                </div>
+
+                <!-- LOCATION / SILIGURI -->
+                <div class="about-location">
+                    <div class="about-location-grid">
+                        <div class="about-location-content">
+                            <span class="section-tag-about">Visit Our Showroom</span>
+                            <h2>Proudly Made in Siliguri, Delivered Across North Bengal</h2>
+                            <p>Whether you are looking for a luxury L-shape sofa, a contemporary 3-seater, or a complete living room layout, WoodNest is your trusted destination for premium <strong>furniture in Siliguri</strong>. Visit our showroom to experience the quality firsthand.</p>
+                            <div class="about-location-features">
+                                <div class="about-location-feature">
+                                    <i class="ph ph-map-pin"></i>
+                                    <span>Siliguri, West Bengal</span>
+                                </div>
+                                <div class="about-location-feature">
+                                    <i class="ph ph-truck"></i>
+                                    <span>Free Delivery in Siliguri</span>
+                                </div>
+                                <div class="about-location-feature">
+                                    <i class="ph ph-clock"></i>
+                                    <span>Open 10 AM – 8 PM</span>
+                                </div>
+                                <div class="about-location-feature">
+                                    <i class="ph ph-whatsapp-logo"></i>
+                                    <span>WhatsApp Support</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-location-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56943.43965817753!2d88.39729!3d26.7271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e441d5a5b7e0b1%3A0x3a1e6e0f7d3e2d5c!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRAFTED BY -->
+                <div class="about-crafted-by">
+                    <p>Crafted with ❤️ by <a href="https://www.nexvoraweb.in" target="_blank">NexvoraWeb</a></p>
                 </div>
 
             </div>
