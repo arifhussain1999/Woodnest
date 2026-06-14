@@ -657,6 +657,80 @@
     window.filterProducts = filterProducts;
     window.showToast = showToast;
     window.openProductDetail = openProductDetail;
+
+    // ============ BLOG ARTICLE MODAL LOGIC ============
+    const blogArticles = {
+        1: {
+            category: "Buying Guide",
+            title: "Looking for the Best Sofa in Siliguri? The Ultimate Wooden Sofa Buying Guide",
+            image: "asset/WhatsApp Image 2026-04-30 at 01.12.07.jpeg",
+            htmlContent: `
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    Finding the perfect <strong>sofa in Siliguri</strong> can feel overwhelming with the myriad of choices available. Whether you are browsing top-tier <strong>wooden furniture showrooms in Siliguri</strong> or searching for expert <strong>customized sofa makers in Siliguri</strong>, selecting a sofa requires a balance of aesthetics, wood quality, and comfort. 
+                </p>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">
+                    When searching for the <strong>best sofa shops in Siliguri</strong>, always look for solid timber (like Teak, Sal, or Jarul) that stands up to the region's humid climate. A customized option allows you to select the exact dimensions and upholstery fabrics that match your space and personality. At WoodNest, we combine sustainable timber sourcing with master craftsmanship to bring you premium, bespoke sofas built for generations.
+                </p>
+            `,
+            ctaText: "Inquire About Custom Sofas",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+choosing+the+best+sofa+in+Siliguri+and+want+to+know+more+about+customization%2Fpricing."
+        },
+        2: {
+            category: "Design Trends 2026",
+            title: "Top 6 Luxury Sofa Design Trends for Indian Homes in 2026",
+            image: "asset/hero2.jpeg",
+            htmlContent: `
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    Based on purchase data, interior designer reports, and search trends across India, these are the wooden sofa design trends dominating in 2026. At <strong>WoodNest</strong>, the leading <strong>customized sofa makers in Siliguri</strong>, we are already incorporating these trends into our premium solid wood collections.
+                </p>
+                <ul style="margin-bottom: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.8; padding-left: 1.2rem; list-style: decimal;">
+                    <li style="margin-bottom: 1.2rem;"><strong>1. Curved & Organic Silhouettes:</strong> Sharp-edged boxy sofas are out. Curved sofas with soft rounded arms make rooms feel warmer and add sculptural elegance. Especially popular in open-plan living rooms across Siliguri and West Bengal.</li>
+                    <li style="margin-bottom: 1.2rem;"><strong>2. Japandi Wooden Frames:</strong> The Japandi aesthetic—a blend of Japanese minimalism and Scandinavian warmth—is reshaping living rooms. Expect slim Teak or Acacia frames, low profiles, and clean slatted backs crafted by WoodNest.</li>
+                    <li style="margin-bottom: 1.2rem;"><strong>3. Modular & Sectional Sets:</strong> Modular sofas are the biggest practical innovation. Individual sections reconfigure for different layouts, scaling from a 2-seater to a full L-shaped sofa. Perfect for Indian families who entertain frequently.</li>
+                    <li style="margin-bottom: 1.2rem;"><strong>4. Earthy & Nature-Inspired Colors:</strong> The dominant sofa palette of 2026: terracotta, warm sand, clay beige, olive green, muted mustard, and deep chocolate brown. These tones pair beautifully with our solid wood furniture.</li>
+                    <li style="margin-bottom: 1.2rem;"><strong>5. Multi-Functional Sofa Beds:</strong> In compact spaces, the wooden sofa-cum-bed design is no longer a compromise—it is a smart design choice. WoodNest's modern versions feature seamless conversion mechanisms and built-in storage.</li>
+                    <li style="margin-bottom: 1.2rem;"><strong>6. Sustainable Solid Wood Revival:</strong> The demand for solid Teak and Sal wood frames has surged sharply in 2026. Buyers are paying for frames that will last decades, handle West Bengal’s humid summers, and resist termite issues that plague MDF.</li>
+                </ul>
+            `,
+            ctaText: "Explore Custom Trendy Sofas",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+2026+sofa+trends+and+want+to+know+more+about+customization."
+        }
+    };
+
+    function openBlogModal(id) {
+        const article = blogArticles[id];
+        if (!article) return;
+
+        const contentDiv = document.getElementById('blogModalContent');
+        if (contentDiv) {
+            contentDiv.innerHTML = `
+                <span style="font-size: 0.8rem; color: var(--maroon); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">${article.category}</span>
+                <h2 style="font-size: 2rem; font-family: 'Playfair Display', serif; color: var(--black); line-height: 1.3; margin-bottom: 1.5rem;">${article.title}</h2>
+                <div style="height: 320px; width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 2rem;">
+                    <img src="${article.image}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="blog-modal-body" style="max-height: 35vh; overflow-y: auto; padding-right: 10px; margin-bottom: 2rem; text-align: left;">
+                    ${article.htmlContent}
+                </div>
+                <div style="text-align: right;">
+                    <a href="${article.ctaLink}" target="_blank" class="btn btn-primary btn-ripple" style="display: inline-block; padding: 0.8rem 2rem; text-decoration: none; border-radius: 4px; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px; color: white;">
+                        ${article.ctaText} →
+                    </a>
+                </div>
+            `;
+        }
+
+        const modal = document.getElementById('blogModal');
+        if (modal) modal.classList.add('active');
+    }
+
+    function closeBlogModal() {
+        const modal = document.getElementById('blogModal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    window.openBlogModal = openBlogModal;
+    window.closeBlogModal = closeBlogModal;
 })();
 
 

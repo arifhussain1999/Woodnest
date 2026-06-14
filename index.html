@@ -3120,6 +3120,63 @@
         details.faq-item summary::-webkit-details-marker {
             display: none;
         }
+
+        /* Blog Section Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            align-items: stretch;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s ease !important;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        @media (max-width: 992px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                max-width: 600px;
+            }
+        }
+
+        /* Read Article Link Styles */
+        .read-article-link {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s, transform 0.2s;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            align-self: flex-start;
+        }
+
+        .read-article-link:hover {
+            color: #1d4ed8;
+        }
+
+        .read-article-link:hover span {
+            transform: translateX(4px);
+        }
+
+        .read-article-link span {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
     </style>
 </head>
 
@@ -3993,7 +4050,7 @@
                     <p style="color:#ccc;">Insights, Trends & Furniture Care</p>
                 </div>
                 <div class="blog-container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
-                    <div style="max-width: 600px; margin: 0 auto;">
+                    <div class="blog-grid">
                         <!-- Blog Post 1 -->
                         <div class="blog-card"
                             style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid rgba(197, 160, 89, 0.15);">
@@ -4001,45 +4058,36 @@
                                 <img src="asset/WhatsApp Image 2026-04-30 at 01.12.07.jpeg"
                                     style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 2.5rem;">
-                                <span
-                                    style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Buying Guide</span>
-                                <h3 style="margin: 0.8rem 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; line-height: 1.3; color: var(--black);">Looking for the Best Sofa in Siliguri? The Ultimate Wooden Sofa Buying Guide</h3>
-                                <p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-top: 1rem;">
-                                    Finding the perfect <strong>sofa in Siliguri</strong> can feel overwhelming with the myriad of choices available. Whether you are browsing top-tier <strong>wooden furniture showrooms in Siliguri</strong> or searching for expert <strong>customized sofa makers in Siliguri</strong>, selecting a sofa requires a balance of aesthetics, wood quality, and comfort. 
-                                </p>
-                                <p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-top: 1rem;">
-                                    When searching for the <strong>best sofa shops in Siliguri</strong>, always look for solid timber (like Teak, Sal, or Jarul) that stands up to the region's humid climate. A customized option allows you to select the exact dimensions and upholstery fabrics that match your space and personality. At WoodNest, we combine sustainable timber sourcing with master craftsmanship to bring you premium, bespoke sofas built for generations.
-                                </p>
-                                <a href="https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+choosing+the+best+sofa+in+Siliguri+and+want+to+know+more+about+customization%2Fpricing." target="_blank"
-                                    style="display: inline-block; margin-top: 1.8rem; color: var(--maroon); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 4px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; transition: color 0.3s;">Inquire About Custom Sofas →</a>
+                            <div style="padding: 2.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+                                <div>
+                                    <span
+                                        style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Buying Guide</span>
+                                    <h3 style="margin: 0.8rem 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; line-height: 1.3; color: var(--black);">Looking for the Best Sofa in Siliguri? The Ultimate Wooden Sofa Buying Guide</h3>
+                                    <p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-top: 1rem;">
+                                        Finding the perfect <strong>sofa in Siliguri</strong> can feel overwhelming with the myriad of choices available. Whether you are browsing top-tier showrooms or searching for expert customized sofa makers, selecting a sofa requires a balance of aesthetics, wood quality, and comfort...
+                                    </p>
+                                </div>
+                                <a href="javascript:void(0)" onclick="openBlogModal(1)" class="read-article-link">Read article <span>→</span></a>
                             </div>
                         </div>
 
                         <!-- Blog Post 2 -->
                         <div class="blog-card"
-                            style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid rgba(197, 160, 89, 0.15); margin-top: 3rem;">
+                            style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid rgba(197, 160, 89, 0.15);">
                             <div style="height: 320px; background: #f0f0f0; overflow: hidden;">
                                 <img src="asset/hero2.jpeg"
                                     style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 2.5rem;">
-                                <span
-                                    style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Design Trends 2026</span>
-                                <h3 style="margin: 0.8rem 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; line-height: 1.3; color: var(--black);">Top 6 Luxury Sofa Design Trends for Indian Homes in 2026</h3>
-                                <p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-top: 1rem;">
-                                    Based on purchase data, interior designer reports, and search trends across India, these are the wooden sofa design trends dominating in 2026. At <strong>WoodNest</strong>, the leading <strong>customized sofa makers in Siliguri</strong>, we are already incorporating these trends into our premium solid wood collections.
-                                </p>
-                                <ul style="margin-top: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.8; padding-left: 1.2rem;">
-                                    <li style="margin-bottom: 1rem;"><strong>1. Curved & Organic Silhouettes:</strong> Sharp-edged boxy sofas are out. Curved sofas with soft rounded arms make rooms feel warmer and add sculptural elegance. Especially popular in open-plan living rooms across Siliguri and West Bengal.</li>
-                                    <li style="margin-bottom: 1rem;"><strong>2. Japandi Wooden Frames:</strong> The Japandi aesthetic—a blend of Japanese minimalism and Scandinavian warmth—is reshaping living rooms. Expect slim Teak or Acacia frames, low profiles, and clean slatted backs crafted by WoodNest.</li>
-                                    <li style="margin-bottom: 1rem;"><strong>3. Modular & Sectional Sets:</strong> Modular sofas are the biggest practical innovation. Individual sections reconfigure for different layouts, scaling from a 2-seater to a full L-shaped sofa. Perfect for Indian families who entertain frequently.</li>
-                                    <li style="margin-bottom: 1rem;"><strong>4. Earthy & Nature-Inspired Colors:</strong> The dominant sofa palette of 2026: terracotta, warm sand, clay beige, olive green, muted mustard, and deep chocolate brown. These tones pair beautifully with our solid wood furniture.</li>
-                                    <li style="margin-bottom: 1rem;"><strong>5. Multi-Functional Sofa Beds:</strong> In compact spaces, the wooden sofa-cum-bed design is no longer a compromise—it is a smart design choice. WoodNest's modern versions feature seamless conversion mechanisms and built-in storage.</li>
-                                    <li style="margin-bottom: 1rem;"><strong>6. Sustainable Solid Wood Revival:</strong> The demand for solid Teak and Sal wood frames has surged sharply in 2026. Buyers are paying for frames that will last decades, handle West Bengal’s humid summers, and resist termite issues that plague MDF.</li>
-                                </ul>
-                                <a href="https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+2026+sofa+trends+and+want+to+know+more+about+customization." target="_blank"
-                                    style="display: inline-block; margin-top: 1.8rem; color: var(--maroon); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 4px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; transition: color 0.3s;">Explore Custom Trendy Sofas →</a>
+                            <div style="padding: 2.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+                                <div>
+                                    <span
+                                        style="font-size: 0.75rem; color: var(--maroon); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Design Trends 2026</span>
+                                    <h3 style="margin: 0.8rem 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; line-height: 1.3; color: var(--black);">Top 6 Luxury Sofa Design Trends for Indian Homes in 2026</h3>
+                                    <p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-top: 1rem;">
+                                        Based on purchase data, interior designer reports, and search trends across India, these are the wooden sofa design trends dominating in 2026. Discover the curves, modular layouts, sustainable hardwoods, and warm earth tones defining modern living spaces...
+                                    </p>
+                                </div>
+                                <a href="javascript:void(0)" onclick="openBlogModal(2)" class="read-article-link">Read article <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -4286,6 +4334,14 @@
             <h3 id="qvName">Sofa Name</h3>
             <p style="color:var(--maroon);font-weight:600;font-size:1.2rem;" id="qvPrice">₹0</p>
             <p style="color:#666;margin:0.5rem 0;" id="qvDesc">Description</p>
+        </div>
+    </div>
+
+    <!-- BLOG MODAL -->
+    <div class="modal-overlay" id="blogModal" onclick="closeBlogModal()">
+        <div class="modal" onclick="event.stopPropagation()" style="max-width: 800px; border-radius: 16px; padding: 2.5rem 2.5rem 3rem;">
+            <button class="modal-close" onclick="closeBlogModal()">✕</button>
+            <div id="blogModalContent"></div>
         </div>
     </div>
 
