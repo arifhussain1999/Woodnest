@@ -690,10 +690,11 @@ document.getElementById("footer").innerHTML = `
         </div>
 
         <div>
-            <h4>Support</h4>
+            <h4>Support & Guides</h4>
             <ul>
-                <li>FAQ</li>
-                <li>Shipping</li>
+                <li onclick="navigateTo('blog')" style="cursor: pointer;">Wood Care Guide</li>
+                <li onclick="navigateTo('blog')" style="cursor: pointer;">Sofa Buying Guide</li>
+                <li onclick="navigateTo('home')" style="cursor: pointer;">FAQ</li>
                 <li>Warranty</li>
             </ul>
         </div>
