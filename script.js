@@ -694,6 +694,58 @@
             `,
             ctaText: "Explore Custom Trendy Sofas",
             ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+2026+sofa+trends+and+want+to+know+more+about+customization."
+        },
+        3: {
+            category: "Wood Care & Maintenance",
+            title: "How to Maintain Solid Teak Wood Sofas in Humid Climates like Siliguri",
+            image: "asset/hero3.jpeg",
+            htmlContent: `
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    Siliguri and North Bengal are known for their high humidity levels, especially during the heavy monsoon season. While buying premium <strong>solid teak wood sofas</strong> is a lifetime investment, knowing how to protect your furniture from dampness, dust, and termites is essential for long-lasting luxury.
+                </p>
+                <ul style="margin-top: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.8; padding-left: 1.2rem;">
+                    <li style="margin-bottom: 1rem;"><strong>1. Regular Dusting &amp; Dry Wiping:</strong> Use a soft, lint-free microfiber cloth to dust your wooden sofa daily. Dampness combined with dust can form sticky grime, which damages the polish over time. Avoid wet wiping.</li>
+                    <li style="margin-bottom: 1rem;"><strong>2. Keep Distance from Walls:</strong> Maintain a 2-inch gap between your wooden furniture and damp walls. This prevents moisture from transferring to the back of the sofa, stopping mildew and mold growth.</li>
+                    <li style="margin-bottom: 1rem;"><strong>3. Use Oil-Based Polishes:</strong> Once a year, apply a high-quality wood preservative or natural oil (like teak oil or beeswax) to feed the wood and restore its protective layer against humidity. Avoid silicon-based spray polishes.</li>
+                    <li style="margin-bottom: 1rem;"><strong>4. Control Indoor Humidity:</strong> Ensure proper ventilation in your living room. During monsoons, run a dehumidifier or use humidity-absorbing packets like silica gel inside storage compartments or near the sofa corners.</li>
+                    <li style="margin-bottom: 1rem;"><strong>5. Avoid Direct Sunlight:</strong> Keep your sofas away from direct window sunlight. Strong UV rays can cause premium solid wood to dry out unevenly, fade the color, and lead to minor surface cracks.</li>
+                </ul>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-top: 1.2rem;">
+                    By following these simple care tips, you can preserve the timeless elegance of your solid wood assets. If you are looking for highly durable, seasoned, and termite-resistant sofas built to withstand local weather conditions, consult <strong>WoodNest</strong>—the trusted <strong>customized sofa makers in Siliguri</strong>. Visit our workshop-direct setup or inquire today!
+                </p>
+            `,
+            ctaText: "Consult Wood Care Experts",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+wooden+sofa+maintenance+and+want+to+ask+about+your+durable+teak+sofas."
+        },
+        4: {
+            category: "Material Science",
+            title: "Teak vs. Sal Wood: Choosing the Best Timber for Custom Sofas in Siliguri",
+            image: "asset/WhatsApp Image 2026-04-30 at 01.12.08.jpeg",
+            htmlContent: [
+                '<p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">',
+                'When commissioning a <strong>custom sofa set in Siliguri</strong>, the single most important decision is the choice of timber.',
+                'The two dominant hardwoods used by premium craftsmen in North Bengal are <strong>Teak (Tectona grandis)</strong> and <strong>Sal (Shorea robusta)</strong>.',
+                'Both are exceptional, but they suit different use cases, budgets, and aesthetic goals.',
+                '</p>',
+                '<div style="margin-bottom: 1.5rem;">',
+                '<div style="background: #fdf9f2; border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem;">',
+                '<h4 style="font-family: Playfair Display, serif; font-size: 1.1rem; color: #333; margin-bottom: 0.8rem;">Teak Wood &mdash; The Gold Standard</h4>',
+                '<p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-bottom: 0.6rem;">Teak is globally revered for its durability, natural oil content, and beauty. Its silica and natural oils make it inherently resistant to moisture, termites, and warping &mdash; critical properties in the humid conditions of Siliguri and the Dooars region. A well-maintained <strong>teak sofa frame</strong> easily lasts 50&ndash;80 years.</p>',
+                '<p style="font-size: 0.85rem; color: #888;">Best for: Long-term investment pieces, humid rooms, and buyers who want lasting value.</p>',
+                '</div>',
+                '<div style="background: #f4f8f2; border-left: 4px solid #6a9e5a; padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem;">',
+                '<h4 style="font-family: Playfair Display, serif; font-size: 1.1rem; color: #333; margin-bottom: 0.8rem;">Sal Wood &mdash; The Regional Champion</h4>',
+                '<p style="font-size: 0.95rem; color: #555; line-height: 1.8; margin-bottom: 0.6rem;">Sal is North Bengal native hardwood sourced from the Dooars and Terai forests. Heavier and harder than Teak, it offers exceptional compressive strength. <strong>Sal wood sofas in Siliguri</strong> are typically 25&ndash;40% more affordable than comparable Teak pieces without compromising structural integrity.</p>',
+                '<p style="font-size: 0.85rem; color: #888;">Best for: Value-conscious buyers, heavy-duty family sofas, and those who prefer a denser grain.</p>',
+                '</div>',
+                '<div style="background: #fff5f5; border-left: 4px solid var(--maroon); padding: 1.5rem; border-radius: 0 8px 8px 0;">',
+                '<h4 style="font-family: Playfair Display, serif; font-size: 1.1rem; color: var(--maroon); margin-bottom: 0.8rem;">WoodNest Expert Recommendation</h4>',
+                '<p style="font-size: 0.95rem; color: #555; line-height: 1.8;">For statement pieces and L-shaped sofas, choose <strong>seasoned Teak</strong>. For robust sectional sets, choose <strong>kiln-dried Sal</strong>. At WoodNest, every timber batch is hand-selected and tested before production &mdash; ensuring the <strong>best sofa price in Siliguri</strong> with zero compromise on quality.</p>',
+                '</div>',
+                '</div>'
+            ].join(''),
+            ctaText: "Consult Our Timber Experts",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+Teak+vs+Sal+wood+and+want+to+know+the+best+timber+for+my+custom+sofa."
         }
     };
 
