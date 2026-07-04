@@ -660,6 +660,30 @@
 
     // ============ BLOG ARTICLE MODAL LOGIC ============
     const blogArticles = {
+        5: {
+            category: "Material Science",
+            title: "Why Kiln-Dried Wood is Crucial for Sofa Durability in Siliguri's Monsoon Climate",
+            image: "asset/hero.jpeg",
+            htmlContent: `
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    North Bengal’s monsoon season is legendary, bringing months of torrential rain and extremely high relative humidity. For homeowners in Siliguri, this atmospheric moisture is the single biggest threat to wooden furniture. Buying a custom sofa set is a significant investment, but if the frame is constructed using unseasoned wood, it is highly likely to warp, swell, crack, or attract fungal mold within the first year.
+                </p>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    To protect your furniture, understanding the difference between raw timber and <strong>seasoned, kiln-dried wood</strong> is crucial. Kiln drying is a controlled process of reducing the moisture content of green timber to an optimal level (usually between 8% to 12%) in a specialized drying chamber.
+                </p>
+                <h4 style="font-family: Playfair Display, serif; font-size: 1.2rem; color: #333; margin-top: 1.5rem; margin-bottom: 0.8rem;">Why Kiln Drying Matters:</h4>
+                <ul style="margin-bottom: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.8; padding-left: 1.2rem;">
+                    <li style="margin-bottom: 0.8rem;"><strong>1. Prevents Warping & Splitting:</strong> Unseasoned wood contains high internal moisture. When the indoor air dries, the wood releases moisture and shrinks unevenly, causing deep splits and structural bending. Kiln drying stabilizes the cells.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>2. Eliminates Fungi & Insect Pests:</strong> The high heat of the kiln chamber completely destroys any embedded wood-boring beetle eggs, termites, and fungal spores. This makes the wood naturally decay-resistant.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>3. Enhances Glue & Polish Adhesion:</strong> Wood with high moisture content rejects glue joints and causes varnish or PU polish to peel, blister, and turn cloudy. Dried wood absorbs finishes beautifully, preserving a luxury gloss.</li>
+                </ul>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-top: 1.2rem;">
+                    At <strong>WoodNest</strong>, the premier <strong>customised sofa makers in Siliguri</strong>, we never compromise. Every piece of Teak or Sal wood used in our sofas is strictly kiln-dried and seasoned, ensuring your sofa remains perfectly aligned and structural for decades. Visit our workshop on Upper Nivedita Road to inspect our seasoned logs!
+                </p>
+            `,
+            ctaText: "Inquire About Kiln-Dried Sofas",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+kiln+dried+wood+and+want+to+know+more+about+your+monsoon+durable+sofas."
+        },
         1: {
             category: "Buying Guide",
             title: "Looking for the Best Sofa in Siliguri? The Ultimate Wooden Sofa Buying Guide",
