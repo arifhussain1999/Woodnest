@@ -807,6 +807,27 @@
 
     window.openBlogModal = openBlogModal;
     window.closeBlogModal = closeBlogModal;
+
+    // ============ POPULATE CUSTOM SOFA NAMES ============
+    function populateCustomSofaNames() {
+        const cards = document.querySelectorAll('#customiseSofaGrid .product-card');
+        cards.forEach(card => {
+            const nameEl = card.querySelector('.product-card-name');
+            if (nameEl && !nameEl.textContent.trim()) {
+                const btn = card.querySelector('.inquiry-btn');
+                if (btn) {
+                    const onclickAttr = btn.getAttribute('onclick') || '';
+                    const match = onclickAttr.match(/like ([^']+)\./);
+                    if (match && match[1]) {
+                        nameEl.textContent = match[1].trim();
+                    }
+                }
+            }
+        });
+    }
+
+    populateCustomSofaNames();
+    document.addEventListener('DOMContentLoaded', populateCustomSofaNames);
 })();
 
 
