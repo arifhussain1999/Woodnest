@@ -660,6 +660,30 @@
 
     // ============ BLOG ARTICLE MODAL LOGIC ============
     const blogArticles = {
+        6: {
+            category: "Design Trends 2026",
+            title: "Minimalist Scandinavian Sofa Designs: Trending in Siliguri",
+            image: "asset/hero.jpeg",
+            htmlContent: `
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    As we move further into 2026, the interior design landscape in Siliguri and North Bengal is seeing a massive shift towards <strong>Minimalist Scandinavian Sofa Designs</strong>. The heavy, ornate furniture of the past is being replaced by clean lines, functional elegance, and natural wood aesthetics that create an illusion of space in modern apartments.
+                </p>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.2rem;">
+                    The core philosophy behind Scandinavian design is <em>hygge</em>—a concept of coziness and comfortable conviviality. When adapted to our regional climate, this means pairing exposed, slimline <strong>solid teak wood frames</strong> with breathable, neutral-toned cotton and linen upholstery.
+                </p>
+                <h4 style="font-family: Playfair Display, serif; font-size: 1.2rem; color: #333; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Features of the 2026 Scandi Trend:</h4>
+                <ul style="margin-bottom: 1.5rem; color: #555; font-size: 0.95rem; line-height: 1.8; padding-left: 1.2rem;">
+                    <li style="margin-bottom: 0.8rem;"><strong>1. Exposed Wood Grains:</strong> Instead of dark, heavy polish, the new trend celebrates the natural texture of the wood. Light stains and matte finishes on Teak and Pine are highly sought after.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>2. Elevated Legs:</strong> Sofas raised on tapered wooden legs allow light and air to flow underneath. This makes small living rooms feel much larger and makes floor cleaning effortless.</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>3. Sustainable Craftsmanship:</strong> Buyers in 2026 are highly conscious of sustainability. At WoodNest, our Scandinavian-inspired sofas are built using ethically sourced, seasoned timber that lasts a lifetime, eliminating the need for fast-furniture replacements.</li>
+                </ul>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-top: 1.2rem;">
+                    Ready to upgrade your living room? As the premier <strong>customised sofa makers in Siliguri</strong>, WoodNest can handcraft the perfect Scandinavian minimalist sofa tailored exactly to your space and fabric preferences.
+                </p>
+            `,
+            ctaText: "Design Your Scandi Sofa Today",
+            ctaLink: "https://wa.me/919933447711?text=Hi%2C+I+read+your+blog+about+Scandinavian+Sofa+Designs+and+want+to+know+more."
+        },
         5: {
             category: "Material Science",
             title: "Why Kiln-Dried Wood is Crucial for Sofa Durability in Siliguri's Monsoon Climate",
